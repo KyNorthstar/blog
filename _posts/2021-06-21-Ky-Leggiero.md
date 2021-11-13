@@ -2,7 +2,7 @@
 layout: post
 title: Ky Leggiero
 date: 2021-06-29 22:35 -0600
-  - GSM
+  - GSRM
   - Gender
   - Pride
 ---

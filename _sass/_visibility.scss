@@ -1,0 +1,12 @@
+
+.visibility-hidden,
+[visibility="hidden"] {
+    visibility: hidden !important;
+    pointer-events: none;
+}
+
+
+.visibility-gone,
+[visibility="gone"] {
+    display: none !important;
+}

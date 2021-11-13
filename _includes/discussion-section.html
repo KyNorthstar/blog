@@ -1,33 +1,12 @@
 <h1>Discussions</h1>
 
-Wanna talk about this for any reason? Hop on over to any of these places to chip in!
+Wanna talk about this for any reason? Hop on over to
+{%- if page.discussion.size == 1 %}
+{% include discussion-list.html %} to chip in!
+{%- else %}
+any of these places to chip in!
 
 <nav class="flex-row flex-wrap flex-horiz-space-around">
-{%- if page.discussion.reddit %}
-{%- include social-media-link.html
-    href=page.discussion.reddit
-    fontAwesomeIcon="reddit-alien"
-    socialNetworkName="Reddit" %}
-{%- endif %}
-
-{%- if page.discussion.mastodon %}
-{%- include social-media-link.html
-    href=page.discussion.mastodon
-    fontAwesomeIcon="mastodon"
-    socialNetworkName="Mastodon" %}
-{%- endif %}
-
-{%- if page.discussion.twitter %}
-{%- include social-media-link.html
-    href=page.discussion.twitter
-    fontAwesomeIcon="twitter"
-    socialNetworkName="Twitter" %}
-{%- endif %}
-
-{%- if page.discussion.telegram %}
-{%- include social-media-link.html
-    href=page.discussion.telegram
-    fontAwesomeIcon="telegram"
-    socialNetworkName="Telegram" %}
-{%- endif %}
+    {% include discussion-list.html %}
 </nav>
+{%- endif %}
