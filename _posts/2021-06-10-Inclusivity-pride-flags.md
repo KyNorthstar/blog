@@ -244,7 +244,7 @@ With this, I release this flag to the community. I claim no ownership over its d
 <aside class="thin legal-disclaimer" data-legal-disclaimer-title-text="Legal Notice" xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
     <a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="/images/CC0 Badge.svg" alt="CC0" /></a>
     <br />
-    To the extent possible under law, <a rel="dct:publisher" href="https://KyLeggiero.me"><span property="dct:title">Ky Leggiero</span></a>, also known as <span property="dct:title">Ben Leggiero</span>, has waived all copyright and related or neighboring rights to <span property="dct:title">The GSRM Pride Flag (2021 Ky Leggiero design)</span>.
+    To the extent possible under law, <a rel="dct:publisher" href="https://KyLeggiero.me"><span property="dct:title">Ky Leggiero</span></a> has waived all copyright and related or neighboring rights to <span property="dct:title">The GSRM Pride Flag (2021 Ky Leggiero design)</span>.
     This work is published from <span property="vcard:Country" datatype="dct:ISO3166" content="US" about="https://KyLeggiero.me">The United States</span>.
 </aside>
 

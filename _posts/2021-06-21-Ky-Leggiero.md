@@ -1,8 +1,10 @@
 ---
 layout: post
-title: Ky Leggiero
+title: Hi! I'm Ky!
 date: 2021-06-29 22:35 -0600
-  - GSM
+date-edit: 2022-06-01 00:25 Mountain time
+categories:
+  - GSRM
   - Gender
   - Pride
 ---
@@ -15,3 +17,11 @@ Funnily enough, a year or so before that, somehow my partner's phone had renamed
 
 And now it's been about a year, I've been going by Ky with my close friends. It feels... really right, to me. I'm still fine going by Ben with those who know me as Ben, but from today on, I'll be introducing myself as Ky.
 [What better month to come out, too?](/Inclusivity-pride-flags) 😉
+
+---
+
+### Update 2022-02-14 ###
+
+I've officially changed my legal name to Ky 🥳
+
+It feels really nice to have done that. Now for the fun part of updating all my records! 😓
