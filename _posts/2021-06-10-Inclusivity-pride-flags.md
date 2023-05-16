@@ -2,7 +2,7 @@
 layout: post
 title: Inclusivity Pride Flags
 date: 2021-06-29 22:35 -0600
-date-edit: 2021-07-07 08:13 -0600
+date-edit: 2023-05-16 12:58 -0600
 categories:
   - GSRM
   - Gender
@@ -105,7 +105,7 @@ In **May 2021**, intersex rights activist [Valentino Vecchietti](https://twitter
 
 While there is something delightful and powerful about the idea of continuing to add stripes and chevrons to the rainbow flag, I personally feel like that isn't the best direction to head with this.
 
-I'm also concerned about the **omissions**. None of these represent various oppressed minorities within the GSRM community, such as Asian-American & Native-American people, various GSRM peoples worldwide whose governments oppress them for being GSRM, people on the Autism Spectrum, bisexual people, polyamorous people, asexual & aromantic people, multigender & genderfluid people, non-binary people, plural systems, et cetera.
+I'm also concerned about the **omissions**. None of these represent various oppressed minorities within the GSRM community, such as Asian-American & Native-American people, various GSRM peoples worldwide whose governments oppress them for being GSRM, Autistic people & people with other neurodiversities, bisexual people, polyamorous people, asexual & aromantic people, multigender & genderfluid people, non-binary people, plural systems, et cetera.
 
 To add all these to a progress pride flag, each with one or more specific stripes highlighting that oppressed subgroup, will only continue to make any subgroup not on the flag feel even more oppressed and unrepresented, and might end up making the flag difficult to understand and reproduce. For that reason, I don't think that adding subgroup-specific flag elements is the best direction.
 
