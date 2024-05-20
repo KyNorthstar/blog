@@ -12,7 +12,7 @@ layout: default
         </div>
     </article>
     {% else %}
-    <article class="post   flex-column flex-vert-space-between {%- for class-name in post.special-theme-name %} {{ class-name }}{% endfor %}">
+    <article class="post   flex-column flex-vert-space-between flex-horiz-stretch {%- for class-name in post.special-theme-name %}   {{ class-name }}{% endfor %}">
         <section>
             <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
@@ -33,16 +33,28 @@ layout: default
             {% endif %}
         </section>
 
+        {%- assign post-tags = '' | split: '' %}
+        {%- if post.contentWarnings %}
+            {%- assign post-tags = post-tags | concat: post.contentWarnings %}
+        {%- endif %}
+        {%- for category in post.categories %}
+            {%- if category == 'Migrated' or category == 'Essay' %}
+                {%- assign post-tags = post-tags | push: category %}
+            {%- endif %}
+        {%- endfor %}
+
+        {% if post-tags and post-tags.size > 0 %}
+        <footer>
+            <ul class="chips plain   flex-row flex-horiz-leading flex-vert-baseline">
+                {%- for tag in post-tags %}
+                <li class="chip" disabled data-tag="{{ tag }}">{{ tag }}</li>
+                {%- endfor %}
+            </ul>
+        </footer>
+        {% endif %}
+
         <footer class="flex-row flex-horiz-space-between flex-vert-center">
             <time class="date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%a. %F at %R" }}</time>
-
-            <ol class="chips   plain   flex-row flex-wrap flex-horiz-center flex-vert-center">
-                {% for category in post.categories %}
-                {% if category == 'Migrated' or category == 'Essay' %}
-                <li><span class="chip" disabled data-category-name="{{ category }}">{{ category }}</span></li>
-                {% endif %}
-                {% endfor %}
-            </ol>
 
             {% unless post.categories contains 'Micro' %}
             <a href="{{ site.baseurl }}{{ post.url }}" class="small low-emphasis button">Read More</a>

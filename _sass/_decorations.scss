@@ -54,6 +54,13 @@ b.sparkly {
     }
 }
 
+b.lozenge {
+    border: 1px solid var(--theme-primary-color);
+    padding: 0 0.5ex;
+    border-radius: 1ex;
+    box-shadow: var(--box-shadow-z2);
+}
+
 del {
     opacity: 75%;
 }
