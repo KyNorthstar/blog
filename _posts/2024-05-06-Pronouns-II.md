@@ -5,6 +5,7 @@ excerpt: Sequel to Pronouns! Previous posts about pronouns focused on 3rd-person
 authors:
     - Rayne
     - Arc
+    - Dax
 ---
 
 This is kinda ironic to write, since [the previous Pronouns post](/Pronouns) included a whole section about plurality, written from an outside perspective before We knew We're plural:
@@ -20,6 +21,7 @@ This is kinda ironic to write, since [the previous Pronouns post](/Pronouns) inc
 > Because of this, I take the strong position that **"they/them" can be used for both singular and plural subjects, but must be conjugated properly**. For example, here's a sample paragraph about an individual:
 >
 > <cite>Us, 2020, thinking We're a [singlet](https://pluralpedia.org/w/Singlet)</cite>
+{.snippet}
 
 So that feels weird to read. We remember it feeling weird to write too lol.
 
@@ -49,3 +51,20 @@ We think this is a very good alternative because it flows naturally, stands out,
 
 ## you/yous/y'all
 
+We're from Atlanta, so We're biased, but "y'all" is clearly the only acceptable answer here. Like come on, "you" is too singular, "yous" is just silly, and "you all" is needlessly wordy.
+
+Ya talk to Us in 2nd-person pronouns, ya use "y'all", okay y'all?
+
+
+
+## they/them
+
+I mean, it's a 3rd-person plural pronoun set, right? We kinda made this clear in the previous Pronouns post [(snippet above)](#singularity-vs-plurality), but when you use it collectively, just do what's been done for centuries and use plrural they/them.
+
+
+
+## Capitalized?
+
+Some people choose to capitalize these 2nd- andn 3rd-person pronouns when talking to Us... like "so yesterday I was talking to Them and They said that They like pilk" or "how've Y'all been since Y'all's incident?"
+
+Feels weird. Not gonna say no, it's genuinely Fine™, but it really feels like it's verging on the way folks use capitalization for deities' pronouns.
