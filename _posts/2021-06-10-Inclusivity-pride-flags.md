@@ -7,6 +7,9 @@ categories:
   - GSRM
   - Gender
   - Pride
+  - Society
+  - Identity
+  - Civil Rights
 
 excerpt: There's a lot of divisions in the Gender, Sexual, & Romantic Minorities (GSRM) community. Some folks have used flags to call out these divisions to begin addressing them.
 social-preview-image: https://blog.kyleggiero.me/images/Pride%20Flags/I%20made%20a%20pride%20flag.png

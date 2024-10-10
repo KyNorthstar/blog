@@ -10,12 +10,23 @@ layout: default
     <div class="entry">
     {{ content }}
 
+    {%- if page.further-reading.size > 0 %}
+    <h2>Further Reading</h2>
+
+    <ul>
+        {%- for article in page.further-reading %}
+        <li><a href="{{ article.url }}" target="_blank">{{ article.name }}</a>
+            {%- if article.author -%}
+                , by {% if article.author-url -%} <a href="{{ article.author-url }}" target="_blank">{{ article.author }}</a> {%- else -%} {{ article.author }} {%- endif -%}
+            {%- endif -%}
+        </li>
+        {%- endfor %}
+    </ul>
+    {%- endif %}
+
     {%- if page.discussion %}
-
-
-
     {% include discussion-section.html %}
-    {% endif %}
+    {%- endif %}
     </div>
 
     <footer class="card">
@@ -31,24 +42,36 @@ layout: default
                     <span>{% if page.date-migrated or page.date-edit %}Originally posted{% else %}Posted{% endif %}</span> {{ page.date | date: "%F <span>(a %A)</span> at <span>%R %Z</span>" }}
                 </time>
             </li>
-            {% if page.date-migrated %}
+            {%- if page.date-migrated %}
             <li>
                 <time class="date" datetime="{{ page.date-migrated | date_to_xmlschema }}">
                     Migrated {{ page.date-migrated | date: "%F (a %A) at %R %Z" }}
                 </time>
             </li>
-            {% endif %}
-            {% if page.date-edit %}
+            {%- endif %}
+            {%- if page.date-edit %}
             <li>
                 <time class="date" datetime="{{ page.date-edit | date_to_xmlschema }}">
                     Updated {{ page.date-edit | date: "%F (a %A) at %R %Z" }}
                 </time>
             </li>
-            {% endif %}
+            {%- endif %}
         </ol>
 
+        {% if page.sources.size > 0 %}
+        <section id="Sources">
+            <h4>Sources</h4>
+
+            <ul>
+                {%- for source in page.sources %}
+                <li><a href="{{ source.url }}" target="_blank">{{ source.name }}</a></li>
+                {%- endfor %}
+            </ul>
+        </section>
+        {%- endif %}
+
         <footer class="oss-links">
-            {% if page.original-url %}
+            {%- if page.original-url %}
             <a href="{{ page.original-url }}" title="View Original" target="_blank" class="low-emphasis button"><i class="material-icons">import_contacts</i> <span>View Original</span></a>
             {% endif %}
             <a href="https://github.com/KyLeggiero/blog/commits/{{ site.git.default-branch }}/{{ page.path }}" title="Post History" target="_blank" class="low-emphasis button"><i class="material-icons">history</i> <span>History</span></a>

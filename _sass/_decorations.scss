@@ -54,6 +54,13 @@ b.sparkly {
     }
 }
 
+b.lozenge {
+    border: 1px solid var(--theme-primary-color);
+    padding: 0 0.5ex;
+    border-radius: 1ex;
+    box-shadow: var(--box-shadow-z2);
+}
+
 del {
     opacity: 75%;
 }
@@ -103,5 +110,18 @@ del {
 
     100% {
         background-position: 100%;
+    }
+}
+
+
+
+:link {
+    &[href*='youtube.com'],
+    &[href*='youtu.be'] {
+        &::before {
+            content: "⏯️"; // TODO: Make a real icon
+            display: inline;
+            margin-inline-end: 1ex;
+        }
     }
 }

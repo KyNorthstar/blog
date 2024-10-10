@@ -32,6 +32,10 @@
         margin-block-end: 1ex;
     }
 
+    ul, ol {
+        margin: 0;
+    }
+
     .date {
         opacity: 0.5;
         font-size: 80%;
@@ -61,9 +65,14 @@
 
     footer {
         max-width: none;
+        width: 100%;
+        width: -webkit-fill-available;
+        width: fill-available;
+        
         min-height: 2em;
         margin: 1ex 0 0;
-
+        
         --button-flat-margin: 0;
+
     }
 }
