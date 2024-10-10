@@ -112,3 +112,16 @@ del {
         background-position: 100%;
     }
 }
+
+
+
+:link {
+    &[href*='youtube.com'],
+    &[href*='youtu.be'] {
+        &::before {
+            content: "⏯️";
+            display: inline;
+            margin-inline-end: 1ex;
+        }
+    }
+}

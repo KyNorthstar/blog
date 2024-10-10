@@ -21,7 +21,7 @@ This is kinda ironic to write, since [the previous Pronouns post](/Pronouns) inc
 > Because of this, I take the strong position that **"they/them" can be used for both singular and plural subjects, but must be conjugated properly**. For example, here's a sample paragraph about an individual:
 >
 > <cite>Us, 2020, thinking We're a [singlet](https://pluralpedia.org/w/Singlet)</cite>
-{.snippet}
+{:.snippet}
 
 So that feels weird to read. We remember it feeling weird to write too lol.
 

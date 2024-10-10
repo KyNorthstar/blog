@@ -6,6 +6,7 @@ date-edit: 2020-07-11 14:07 -0600
 categories:
   - Civil Rights
   - Society
+  - Gender
 
 special-theme-name: trans-nb-pride-theme
 social-preview-image: https://BenLeggieroBlogCdn.BHStudios.org/Photos/I'm Non-Binary 2 thumbnail.jpg
