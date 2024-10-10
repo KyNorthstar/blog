@@ -2,7 +2,7 @@
 title: Cis Is a Slur
 excerpt: That's what many people say, whose gender aligns with that expected of them since birth. They say "cis" is a slur, and that they aren't "cisgender"; instead they identify as "normal". Who's to say they're wrong?
 
-date: 2024-10-10 13:30 MT
+date: 2024-10-10 16:00 MT
 
 authors:
     - Rayne
