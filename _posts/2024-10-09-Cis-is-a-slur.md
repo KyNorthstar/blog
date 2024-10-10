@@ -15,9 +15,6 @@ categories:
     - Society
     - Civil Rights
 
-page-specific-stylesheets:
-    - 2024-10-09-Cis-is-a-slur.css
-
 sources:
     - 
         name: "Wiktionary: trans-"

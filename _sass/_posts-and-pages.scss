@@ -164,28 +164,28 @@
         border-radius: 1ex;
         border-inline-start: 2px solid var(--semitransparent-grey);
         color: inherit;
-        
+
         margin: 2em;
         padding: 1em;
         
         position: relative;
         
-        &::before {
+        &::before,
+        &::after {
             display: block;
-            content: "“";
             position: absolute;
             font-size: 300%;
             opacity: 25%;
+        }
+        
+        &::before {
+            content: "“";
             top: 0;
             left: 0.2ex;
         }
         
         &::after {
-            display: block;
             content: "„";
-            position: absolute;
-            font-size: 300%;
-            opacity: 25%;
             bottom: 0;
             right: 0.2ex;
         }
@@ -205,6 +205,10 @@
             &::before {
                 content: "— ";
             }
+        }
+
+        &.big {
+            font-size: larger;
         }
     }
 

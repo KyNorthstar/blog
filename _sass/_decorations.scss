@@ -119,7 +119,7 @@ del {
     &[href*='youtube.com'],
     &[href*='youtu.be'] {
         &::before {
-            content: "⏯️";
+            content: "⏯️"; // TODO: Make a real icon
             display: inline;
             margin-inline-end: 1ex;
         }
