@@ -395,7 +395,8 @@
         }
 
         .highlight {
-            background-color: hsla(65deg, 100%, 75%, .4);
+            background-color: var(--theme-accent-color);
+            color: var(--theme-text-on-accent-color-color);
         }
     }
 
