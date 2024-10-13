@@ -2,7 +2,7 @@
 layout: post
 title: Non-Binary
 date: 2020-07-11 12:30 -0600
-date-edit: 2020-07-11 14:07 -0600
+date-edit: 2024-10-13 14:39 MT
 categories:
   - Civil Rights
   - Society
@@ -16,7 +16,7 @@ social-preview-image: /images/I'm Non-Binary 2 thumbnail.jpg
 That's the umbrella over my gender! This is a discovery that elates me! It brings me such joy, to know that this is how God made me. Ironic, isn't it? "But you're a programmer; you love binary!" 😝
 
 
-[Non-Binary means neither male nor female](https://en.wikipedia.org/wiki/Non-binary_gender), but it’s a very broad umbrella term &ndash; lots of Non-Binary people experience and express this in many different ways. For me, I simply don’t particularly care about my gender. I don’t care what pronouns people use for me, either. For a long time, I've let folks use whatever pronouns they want for me. As long as they show common respect and decency, it doesn't really matter to me. Of course, I take the time and care to show them the common respect and decency of knowing and honoring their genders and pronouns &ndash; that should go without saying. Everyone's gender is valid because it's an external expression of their internal self.
+[Non-Binary means neither male nor female](https://en.wikipedia.org/wiki/Non-binary_gender), but it’s a very broad umbrella term &ndash; lots of Non-Binary people experience and express this in many different ways. For me, I simply don’t particularly care about my gender. [I don’t care what pronouns people use for me, either.](/Pronouns) For a long time, I've let folks use whatever pronouns they want for me. As long as they show common respect and decency, it doesn't really matter to me. Of course, I take the time and care to show them the common respect and decency of knowing and honoring their genders and pronouns &ndash; that should go without saying. Everyone's gender is valid because it's an external expression of their internal self.
 
 
 Of course, I’ve been thinking about this for a long time. A very long time. I've had adventures discovering my gender through the past eleven years or so. I’ve talked with God, friends, therapists, and doctors about it for years, as well. Before I knew what Non-Binary was, I tried calling myself male, and later I tried female, and neither felt right. Today, I feel happy and content knowing that I’ve figured out this part of myself! It gives me peace that I’ve never felt before.
