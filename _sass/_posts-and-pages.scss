@@ -396,7 +396,11 @@
 
         .highlight {
             background-color: var(--theme-accent-color);
-            color: var(--theme-text-on-accent-color-color);
+            
+            &,
+            & th:not(.plain) small {
+                color: var(--theme-text-on-accent-color-color);
+            }
         }
     }
 
