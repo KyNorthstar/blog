@@ -234,7 +234,7 @@
         &.mid-post-hero,
         &.end-post-hero {
             display: block;
-            width: 80%;
+            max-width: 80%;
             margin-inline: auto;
             margin-block: 3em;
             max-height: calc(90vh - var(--app-bar-height-auto, 1cm));

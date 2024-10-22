@@ -1,0 +1,42 @@
+---
+---
+
+:root {
+    --energy-usage-emphasis-big: var(--material-deep-orange-a400);
+}
+
+.brightness-light {
+
+}
+
+.brightness-dark {
+    --energy-usage-emphasis-big: var(--material-deep-orange-a100);
+}
+
+
+
+.energy-usage {
+    text-align: center;
+    font-size: 24pt;
+    margin-inline: auto;
+    box-sizing: content-box;
+    width: fit-content;
+
+
+    * {
+        display: block;
+    }
+
+
+    .specifier {
+        font-size: 1rem;
+        opacity: 75%;
+    }
+
+
+    &.big {
+        font-size: 48pt;
+
+        color: var(--energy-usage-emphasis-big);
+    }
+}
