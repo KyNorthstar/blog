@@ -1,0 +1,26 @@
+
+<ul class="show-only-when-js-is-enabled   plain inline content-replacer chips"
+        data-replaced-element-selector="[data-energy-unit]"
+        data-content-replacer-data-source="__hide-or-show"
+        data-content-replacer-data-replacement="energy-unit-option">
+    <li><button class="accented chip mutates-page" data-energy-unit-option="joules" selected>Joules</button></li>
+    <li><button class="accented chip mutates-page" data-energy-unit-option="watt-hours">Watt-hours</button></li>
+    <li><button class="accented chip mutates-page" data-energy-unit-option="gasoline">Gasoline</button></li>
+</ul>
+
+{% unless energy-switcher-did-hook-up-js %}
+<script>
+$(function() {
+    if (document.energySwitcherDidHookUp) { return }
+    document.energySwitcherDidHookUp = true
+    document.addContentReplacer("[data-energy-unit]", (dataKind, dataReplacementKey) => {
+        console.log("Test")
+        return {
+            "text": "TODO"
+        }
+    })
+})
+</script>
+{% endunless %}
+
+{% assign energy-switcher-did-hook-up-js=true %}

@@ -38,7 +38,7 @@
         font-weight: 400;
         color: var(--theme-foreground-color);
         color: color-mix(in srgb, var(--theme-foreground-color) 80%, transparent);
-        
+
         strong {
             font-weight: 900;
             color: var(--theme-foreground-color);
@@ -89,6 +89,12 @@
             padding: unset;
             margin: var(--heading-spacing-block-start) 0 var(--heading-spacing-block-end);
         }
+    }
+
+    aside {
+      h1, h2, h3, h4, h5, h6 {
+        padding: 0;
+      }
     }
 
     h1 {
@@ -148,7 +154,7 @@
             padding: 0 0 2em;
             font-size: 80%;
             opacity: 75%;
-            
+
             &:not(.flex-row):not(.flex-column) {
                 display: block;
             }
@@ -167,9 +173,9 @@
 
         margin: 2em;
         padding: 1em;
-        
+
         position: relative;
-        
+
         &::before,
         &::after {
             display: block;
@@ -177,13 +183,13 @@
             font-size: 300%;
             opacity: 25%;
         }
-        
+
         &::before {
             content: "“";
             top: 0;
             left: 0.2ex;
         }
-        
+
         &::after {
             content: "„";
             bottom: 0;
@@ -197,11 +203,11 @@
         h1:first-child {
             padding-block-start: 0;
         }
-        
+
         cite {
             opacity: 0.5;
             font-style: italic;
-    
+
             &::before {
                 content: "— ";
             }
@@ -396,7 +402,7 @@
 
         .highlight {
             background-color: var(--theme-accent-color);
-            
+
             &,
             & th:not(.plain) small {
                 color: var(--theme-text-on-accent-color-color);
@@ -442,6 +448,12 @@
         .oss-links {
             text-align: end;
         }
+    }
+    
+    
+    .statistic-omitted {
+        opacity: 50%;
+        font-style: italic;
     }
 
 

@@ -48,6 +48,7 @@
     <script src="https://code.jquery.com/jquery-3.x-git.slim.min.js">/* jQuery */</script>
     <script src="https://scripts.bhstudios.org/assets/v2/general/js/lib/kotlin.js">/* Kotlin/JS for BHStudios General Script */</script>
     <script src="https://scripts.bhstudios.org/assets/v2/general/js/BHStudios%20General%20Scripts.js">/* BHStudios General Script */</script>
+    <script src="/scripts/ContentSwitcher.js">/* Allows pages to provide controls for the user to swap out the content of elements */</script>
 
     <!-- Forked from Jekyll Now - http://GitHub.com/barryclark/jekyll-now -->
     <!-- See also the git repository at https://GitHub.com/Blog.KyLeggiero.me -->
@@ -76,7 +77,11 @@
     <header class="app-bar effect-background">
         <a href="#" class="flat button show-sidebar-button" onclick="return false;"><i class="material-icons">menu</i></a>
         <a href="/" class="flat button   back-to-root-link"><h1 class="title"><span class="title-text">{{ site.title }}</span><span class="subtitle-text"></span></h1></a>
+        {% if page.app-bar.right-widget -%}
+        {% include {{ page.app-bar.right-widget }} -%}
+        {% else -%}
         <span class="layout-placeholder"></span>
+        {%- endif %}
     </header>
 
     {%- if page.hero-image %}

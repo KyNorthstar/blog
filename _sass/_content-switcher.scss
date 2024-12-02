@@ -1,0 +1,24 @@
+
+*,
+ol,
+ul {
+    &.switched-content {
+        display: inline;
+        
+        &,
+        &>* {
+            margin: 0;
+            padding: 0;
+        }
+        
+        &>* {
+            display: block;
+        }
+    }
+}
+
+
+
+// .switched-content>:not(:first-child):not(:only-child)::before {
+//     content: " = ";
+// }

@@ -40,3 +40,16 @@
         color: var(--energy-usage-emphasis-big);
     }
 }
+
+
+
+[data-switched-element-selector="[data-energy-unit]"] {
+    position: sticky;
+    top: var(--app-bar-height-auto);
+    inset-block-start: var(--app-bar-height-auto);
+    background: var(--theme-background-color);
+    z-index: 100;
+    width: fit-content;
+    margin-inline: auto;
+    border-radius: 0 0 1em 1em;
+}
