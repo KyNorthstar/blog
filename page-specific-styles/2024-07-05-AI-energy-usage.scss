@@ -23,7 +23,7 @@
     width: fit-content;
 
 
-    * {
+    &>* {
         display: block;
     }
 
@@ -38,6 +38,19 @@
         font-size: 48pt;
 
         color: var(--energy-usage-emphasis-big);
+    }
+    
+    
+    &.card aside {
+        opacity: 75%;
+        // xborder: none;
+        // xpadding: 0;
+        margin-inline: 0;
+        background-color: var(--theme-background-color-at-level-3);
+        
+        &:last-child {
+            margin-block-end: 0;
+        }
     }
 }
 

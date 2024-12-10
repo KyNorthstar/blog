@@ -3,7 +3,7 @@
 ol,
 ul {
     &.switched-content {
-        display: inline;
+        display: inline-flex;
         
         &,
         &>* {
@@ -12,7 +12,7 @@ ul {
         }
         
         &>* {
-            display: block;
+            list-style: none;
         }
     }
 }

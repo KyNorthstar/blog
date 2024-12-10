@@ -38,6 +38,10 @@
         font-weight: 400;
         color: var(--theme-foreground-color);
         color: color-mix(in srgb, var(--theme-foreground-color) 80%, transparent);
+        
+        * {
+            text-indent: 0;
+        }
 
         strong {
             font-weight: 900;

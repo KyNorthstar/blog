@@ -1,23 +1,23 @@
 
 
 
+/// A singleton which manages all content switchers
+///
+/// Use this to connect new content switchers to the current document.
+/// See the documentation for ``ContentSwitcher`` for how to use a content switcher
 class ContentSwitchers {
 
-    static _contentSwitchers = {};
+    static #contentSwitchers = {};
 
 
-    constructor() {
+    static connectNewContentSwitcher(selector/*: String */) {
+        this.#contentSwitchers[selector] = new ContentSwitcher(selector)
+        this.#runContentSwitchers()
     }
 
 
-    static connectNewContentSwitcher(selector/*: String */, switcher/*: ContentSwitcher */) {
-        this._contentSwitchers[selector] = new ContentSwitcher(selector, switcher)
-        this._runContentSwitchers()
-    }
-
-
-    static _runContentSwitchers() {
-        for (const contentSwitcher of Object.values(this._contentSwitchers)) {
+    static #runContentSwitchers() {
+        for (const contentSwitcher of Object.values(this.#contentSwitchers)) {
             contentSwitcher._connectAndRun()
         }
     }
@@ -25,20 +25,24 @@ class ContentSwitchers {
 
 
 
+/// A content switcher allows you to define collections of similar items where one item at a time is displayed and the rest are hidden.
+///
+/// Here's what the HTML might look like:
+/// ```html
+///
+/// ```
 class ContentSwitcher {
     
-    selectorForAllElementsWithContentToBeSwitched/*: String */
-    switcher/*: function */
+    #selectorForAllElementsWithContentToBeSwitched/*: String */
     
     
-    constructor(selectorForAllElementsWithContentToBeSwitched/*: String */, switcher/*: function */) {
-        this.selectorForAllElementsWithContentToBeSwitched = selectorForAllElementsWithContentToBeSwitched
-        this.switcher = switcher
+    constructor(selectorForAllElementsWithContentToBeSwitched/*: String */) {
+        this.#selectorForAllElementsWithContentToBeSwitched = selectorForAllElementsWithContentToBeSwitched
     }
     
     
     _connectAndRun() {
-        const contentSwitcherSelectorUi = $(`[data-switched-element-selector="${this.selectorForAllElementsWithContentToBeSwitched}"]`)
+        const contentSwitcherSelectorUi = $(`[data-switched-element-selector="${this.#selectorForAllElementsWithContentToBeSwitched}"]`)
         if (contentSwitcherSelectorUi.length < 1) { return }
 
         const contentSwitcherDataSourceDataKey = contentSwitcherSelectorUi.data("content-switcher-data-source")
@@ -50,42 +54,42 @@ class ContentSwitcher {
         const contentSwitcherDataReplacementSelector = `[data-${contentSwitcherDataReplacementDataKey}]`
         if (typeof(contentSwitcherDataReplacementSelector) !== 'string') { return }
 
-        this._connectButtons(contentSwitcherDataSourceDataKey,
+        this.#connectButtons(contentSwitcherDataSourceDataKey,
                        contentSwitcherDataReplacementSelector,
                        contentSwitcherDataReplacementDataKey)
 
-        this._run(contentSwitcherDataSourceDataKey,
+        this.#run(contentSwitcherDataSourceDataKey,
             contentSwitcherDataReplacementSelector,
             contentSwitcherDataReplacementDataKey)
     }
     
     
-    _connectButtons(contentSwitcherDataSourceDataKey/*: String*/,
+    #connectButtons(contentSwitcherDataSourceDataKey/*: String*/,
                     contentSwitcherDataReplacementSelector/*: String*/,
                     contentSwitcherDataReplacementDataKey/*: String*/) {
         $(contentSwitcherDataReplacementSelector).click((element) => {
             const currentTarget = element.currentTarget
             if (!currentTarget) { return }
-            this._clearSelection(contentSwitcherDataReplacementSelector)
-            this._select(currentTarget)
-            this._run(contentSwitcherDataSourceDataKey,
+            this.#clearSelection(contentSwitcherDataReplacementSelector)
+            this.#select(currentTarget)
+            this.#run(contentSwitcherDataSourceDataKey,
                 contentSwitcherDataReplacementSelector,
                 contentSwitcherDataReplacementDataKey)
         })
     }
     
     
-    _clearSelection(contentSwitcherDataReplacementSelector/*: String*/) {
+    #clearSelection(contentSwitcherDataReplacementSelector/*: String*/) {
         $(contentSwitcherDataReplacementSelector).attr("selected", null)
     }
 
 
-    _select(element/*: Element*/) {
+    #select(element/*: Element*/) {
         $(element).attr("selected", true)
     }
 
 
-    _run(contentSwitcherDataSourceDataKey/*: String*/,
+    #run(contentSwitcherDataSourceDataKey/*: String*/,
          contentSwitcherDataReplacementSelector/*: String*/,
          contentSwitcherDataReplacementDataKey/*: String*/) {
         const userSelectedContentReplacement = $(`${contentSwitcherDataReplacementSelector}[selected]`)
@@ -94,7 +98,7 @@ class ContentSwitcher {
         const userSelectedContentType = userSelectedContentReplacement.data(contentSwitcherDataReplacementDataKey)
         if (typeof(userSelectedContentType) != 'string') { return }
 
-        const elementsWithContentToBeSwitched = $(this.selectorForAllElementsWithContentToBeSwitched)
+        const elementsWithContentToBeSwitched = $(this.#selectorForAllElementsWithContentToBeSwitched)
         elementsWithContentToBeSwitched.attr("hidden", "")
         elementsWithContentToBeSwitched.each((_, rawElement) => {
             const element = $(rawElement)
@@ -109,6 +113,6 @@ class ContentSwitcher {
 
 
 
-document.addContentSwitcher = (selector/*: String */, switcher/*: ContentSwitcher */) => {
-    ContentSwitchers.connectNewContentSwitcher(selector, switcher)
+document.addContentSwitcher = (selector/*: String */) => {
+    ContentSwitchers.connectNewContentSwitcher(selector)
 }
