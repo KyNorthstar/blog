@@ -17,7 +17,7 @@ categories:
 hero-image: /images/AI vs Fortnite.png
 
 page-specific-stylesheets:
-    - 2024-07-05-AI-energy-usage.css
+    - 2024-07-05-Image-generators-energy-usage.css
 
 # app-bar:
 #     right-widget: energy-unit-switcher.html
@@ -272,7 +272,7 @@ Taking these together, I can safely assume:
   <figure class="energy-usage card">
     <span class="specifier">Your device is currently using</span>
     <b>{% include energy-units.html
-      joules='28.30 KJ ~ 1.666 GJ'
+      joules='28.30 kJ ~ 1.666 GJ'
       watt-hours='7.3 Wh ~ 463.9 kWh'
       gasoline='0.18 tsp ~ 13.71 gal'
     %}</b>
@@ -280,22 +280,45 @@ Taking these together, I can safely assume:
   </figure>
 </div>
 
-Although, that's a very wide range, and you're definitely not using at 100% all the time, so I'll be reasonable and say it's probably somewhere in the middle. **Let's go with what that iMac uses at idle**:
+That's... a very wide range, and you're definitely not using at 100% all the time, so I'll be reasonable and say it's probably somewhere in the middle. **Let's go with what that iMac uses at idle**:
 <div class="flex-row flex-wrap">
   <figure class="energy-usage card">
-    <b>{% include energy-units.html
-      joules='9.65 kJ'
-      watt-hours='2.68 Wh'
-      gasoline='0.06 tsp'
-    %}</b>
+    <b>
+      {%- capture energyUsage-averageDevice-perMinute %}
+        {%- include energy-units.html
+          joules='160 J'
+          watt-hours='44.67 mWh'
+          gasoline='296 µL'
+        %}
+      {%- endcapture %}
+      {{- energyUsage-averageDevice-perMinute -}}
+    </b>
+    <figcaption role="aside" class="specifier">every minute</figcaption>
+  </figure>
+  <figure class="energy-usage card">
+    <b>
+      {%- capture energyUsage-averageDevice-perHour %}
+        {%- include energy-units.html
+          joules='9.65 kJ'
+          watt-hours='2.68 Wh'
+          gasoline='0.06 tsp'
+        %}
+      {%- endcapture %}
+      {{- energyUsage-averageDevice-perHour -}}
+    </b>
     <figcaption role="aside" class="specifier">every hour</figcaption>
   </figure>
   <figure class="energy-usage card">
-    <b>{% include energy-units.html
-      joules='84.57 MJ'
-      watt-hours='23.49 kWh'
-      gasoline='0.68 gal'
-    %}</b>
+    <b>
+      {%- capture energyUsage-averageDevice-perYear %}
+        {%- include energy-units.html
+          joules='84.57 MJ'
+          watt-hours='23.49 kWh'
+          gasoline='0.68 gal'
+          %}
+        {%- endcapture %}
+        {{- energyUsage-averageDevice-perYear -}}
+      </b>
     <figcaption role="aside" class="specifier">every year</figcaption>
   </figure>
 </div>
@@ -306,33 +329,45 @@ Much more workable. Let's continue!
 
 ## The Energy Usage of a Human Body
 
-Yes, I actually am going here. Don't worry; I'm not going to start taking into account how much energy it takes to grow your food or air-condition the room you're in or whatever. Let's pretend you're sitting outside on a perfectly comfortable day, in the shade so your device is comfortable too, and your nutrition is 100% renewable. No energy to account for outside you and your device.
+Yes, I actually am going here.
 
-Now, it takes less energy for a human to type a prompt into the text field of an image generator, than it does for that same human to play an hour of a twitch-response multiplayer game like Fortnite.
+Don't worry; I'm not going to start taking into account how much energy it takes to grow your food or air-condition the room you're in or whatever. Let's pretend you're sitting outside on a perfectly comfortable day, in the shade so your device is comfortable too, and your nutrition is 100% renewable.<!-- Using the word "renewable" here to hopefully get readers to think about how renewability changes how they think about this. --> No energy to account for outside you and your device.
+
+Now. It takes less energy for a human to type a prompt into the text field of an image generator, than it does for that same human to play an hour of a twitch-response multiplayer game like Fortnite.
 
 I found [a website][Calories Burned Playing Video Games] which attempts to give estimates for Kilocalories burned by playing video games, above the base KCals that humans burn just existing. The thing is, this website focuses on "traditional video game" versus video games designed to promote fitness, like Wii Fit and DDR.
 
 Well that just brings us back to the Minesweeper vs Cyberpunk problem!
 
-Alright, let's make an educated guess and assume a Fortnite session is comparable to a light-to-moderate Wii Fit session. Splitting the difference, that's something like 219 KCal above human base. That works out to:
+Alright, let's make an educated guess and assume a Fortnite session is comparable to a light-to-moderate Wii Fit session. Splitting the difference, that's something like **219 KCal** above human base. That works out to:
 
 <figure class="energy-usage card">
-  <b>{% include energy-units.html
-    joules='917.6 KJ'
-    watt-hours='254.89 Wh'
-    gasoline='5.81 tsp'
-  %}</b>
+  <b>
+    {%- capture energyUsage-humanBody-fortniteSession %}
+      {%- include energy-units.html
+        joules='917.6 kJ'
+        watt-hours='254.89 Wh'
+        gasoline='5.81 tsp'
+      %}
+    {%- endcapture %}
+    {{- energyUsage-humanBody-fortniteSession -}}
+    </b>
     <figcaption role="aside" class="specifier">per Fortnite session</figcaption>
 </figure>
 
 And uh... I'll say that typing a sentence is negligibly above base. Let's toss it a token 1 KCal just to level the playfield a bit. Y'know, imagine you're really hammering those keys:
 
 <figure class="energy-usage card">
-  <b>{% include energy-units.html
-    joules='4.19 KJ'
-    watt-hours='1.16 Wh'
-    gasoline='0.03 tsp'
-  %}</b>
+  <b>
+    {%- capture energyUsage-humanBody-1KCal %}
+      {%- include energy-units.html
+        joules='4.19 kJ'
+        watt-hours='1.16 Wh'
+        gasoline='0.03 tsp'
+      %}
+    {%- endcapture %}
+    {{- energyUsage-humanBody-1KCal -}}
+  </b>
     <figcaption role="aside" class="specifier">per prompt</figcaption>
 </figure>
 
@@ -354,20 +389,40 @@ Let's look specifically at [Unreal Engine]: one of the more popular ones for big
 
 I found [a paper from February 2023][Reducing Fortnite’s Power Consumption] about Epic Games trying to make the Unreal Engine game Fortnite more energy-efficient. What a coincidence!
 
-According to that paper, after their improvements to client-side energy efficiency, it takes an Xbox Series X **~168 Watts** to play a Fortnite session.
+According to that paper, after their improvements to client-side energy efficiency, it takes an Xbox Series X **~168 Watts** to play Fortnite.
 
 <aside>Unhelpfully, this paper almost entirely talks about ratios between previous usage and usage after their changes, without citing what either was, so I had to guesstimate this number from the "Average power consumption" graph.</aside>
 
 And according to [this webpage][Fortnite weekly usage], the average active Fortnite player spends 6~10hrs per week playing the game. If you put those together, then for a single player's device running Fortnite, that works out to:
 
-<figure class="energy-usage card">
-  <b>{% include energy-units.html
-    joules='3.63 ~ 6.05 MJ'
-    watt-hours='1.01 ~ 1.68 kWh'
-    gasoline='0.48 ~ 0.80 cups'
-  %}</b>
-  <figcaption role="aside" class="specifier">per day</figcaption>
-</figure>
+<div class="flex-row flex-wrap">
+  <figure class="energy-usage card">
+    <b>
+      {%- capture energyUsage-fortnite-client-perSession %}
+        {%- include energy-units.html
+          joules='604.8 kJ'
+          watt-hours='168Wh'
+          gasoline='3.83 tsp'
+        %}
+      {%- endcapture %}
+      {{- energyUsage-fortnite-client-perSession -}}
+    </b>
+    <figcaption role="aside" class="specifier">per player per session</figcaption>
+  </figure>
+  <figure class="energy-usage card">
+    <b>
+      {%- capture energyUsage-fortnite-client-perWeek %}
+        {%- include energy-units.html
+          joules='3.63 ~ 6.05 MJ'
+          watt-hours='1.01 ~ 1.68 kWh'
+          gasoline='0.48 ~ 0.80 cups'
+        %}
+      {%- endcapture %}
+      {{- energyUsage-fortnite-client-perWeek -}}
+    </b>
+    <figcaption role="aside" class="specifier">per player per per Week</figcaption>
+  </figure>
+</div>
 
 But remember, this isn't nearly the whole story for playing such an online game. You have to think about the game servers too!
 
@@ -389,18 +444,42 @@ I had to crunch a few sources for this one:
 
 So the basic thing you need to know is that video game servers are usually pretty generic these days. A video game company like Epic pays a server hosing company like AWS to host it for them... So we'll be looking at some generic numbers here.
 
-Being charitable and **assuming they're really efficient**, we can say that one server uses 500 Wh (1.8 MJ). But remember, we're just looking at 1 person playing 1 game of Fortnite on 1 server, so we have to figure out how to divide that up.
+Being charitable and **assuming they're really efficient**, we can say that one server uses {% include energy-units.html
+  joules='1.8 MJ'
+  watt-hours='500 Wh'
+  gasoline='11.39 tsp'
+%}. But remember, we're just looking at 1 person playing 1 game of Fortnite on 1 server, so we have to figure out how to divide that up.
 
 At time of writing, the 24-hour peak Fortnite player count is 1,829,292 concurrent players. Since there's 8 Fortnite server locations (let's pretend each location just as 1 physical server so we don't lose our minds in the weeds), that's about 228,661 players per server. So dividing up 1.8 MJ across 228,661 players finally gets us:
 
-<figure class="energy-usage card">
-  <b>{% include energy-units.html
-    joules='7.87 J'
-    watt-hours='2.18 mWh'
-    gasoline='0.24 μL'
-  %}</b>
+<div class="flex-row flex-wrap">
+  <figure class="energy-usage card">
+    <b>
+      {%- capture energyUsage-fortnite-server-perSession %}
+        {%- include energy-units.html
+          joules='7.87 J'
+          watt-hours='2.18 mWh'
+          gasoline='0.24 μL'
+        %}
+      {%- endcapture %}
+      {{- energyUsage-fortnite-server-perSession -}}
+    </b>
     <figcaption role="aside" class="specifier">per player per session</figcaption>
-</figure>
+  </figure>
+    <figure class="energy-usage card">
+      <b>
+        {%- capture energyUsage-fortnite-server-perWeek %}
+          {%- include energy-units.html
+            joules='47.22 ~ 78.70 J'
+            watt-hours='13.08 ~ 21.80 mWh'
+            gasoline='1.44 ~ 2.40 μL'
+          %}
+        {%- endcapture %}
+        {{- energyUsage-fortnite-server-perWeek -}}
+      </b>
+      <figcaption role="aside" class="specifier">per player per week</figcaption>
+    </figure>
+</div>
 
 Which is delightfully low! **Well done, Fortnite!**
 
@@ -414,20 +493,53 @@ I would love to investigate how much energy something like [DALL-E] uses, but sa
 
 However, [Stable Diffusion] is open-source and freely available to download and inspect, so I'll look at that!
 
-I found [a paper from June 2024][Power Hungry Processing: Watts Driving the Cost of AI Deployment?] which found that Stable Diffusion (among others) takes 0.060~2.907 kWh (0.216~10.465 MJ) for 1,000 image generations, which is:
+I found [a paper from June 2024][Power Hungry Processing: Watts Driving the Cost of AI Deployment?] which found that Stable Diffusion (among others) takes {% include energy-units.html
+  joules='0.216 ~ 10.465 MJ'
+  watt-hours='0.060 ~ 2.907 kWh'
+  gasoline='1.37 ~ 66.25 tsp'
+%} to generate **1,000** images, which is:
 
 <figure class="energy-usage card">
-  <b>{% include energy-units.html
-    joules='0.22 ~ 10.47 KJ'
-    watt-hours='0.06 ~ 2.91 Wh'
-    gasoline='6.74 ~ 326.90 μL'
-  %}</b>
+  <b>
+    {%- capture energyUsage-generate1Image %}
+      {%- include energy-units.html
+        joules='0.22 ~ 10.47 kJ'
+        watt-hours='0.06 ~ 2.91 Wh'
+        gasoline='6.74 ~ 326.90 μL'
+      %}
+    {%- endcapture %}
+    {{- energyUsage-generate1Image -}}
+    </b>
   <figcaption role="aside" class="specifier">per image</figcaption>
 </figure>
+{%- capture energyUsage-generate8Images %}
+  {%- include energy-units.html
+    joules='1.76 ~ 83.76 kJ'
+    watt-hours='0.48 ~ 23.28 Wh'
+    gasoline='0.01 ~ 0.53 tsp'
+  %}
+{%- endcapture %}
 
-<!-- Now, there's an answer! Or... is it? I mean, it sounds like a lot, right? Over 10 Kilojoules just to generate 1 image?
+Now to figure out how much energy it takes for _you_ to generate 8 images, we add in your device and your body. Why 8? Well, most image generators give batches of 4 or so images so I'm being charitable and imagining you try twice to get the perfect image. Assuming it takes 1 minute for the whole process, we can add up the energy taken for you to type it in (**{{- energyUsage-humanBody-1KCal -}}**) and wait for all 8 results (**{{- energyUsage-generate8Images -}}**), and run that iMac I mentioned above which uses **{{ energyUsage-averageDevice-perMinute }}** per minute:
 
-Well, numbers are barely worth anything on their own; let's get to comparing them. -->
+<figure class="energy-usage card">
+  <!--
+    joules='1.76kJ+4.19KJ+160J ~ 83.76kJ+4.19KJ+160J'
+    watt-hours='0.48Wh+1.16Wh+44.67mWh ~ 23.28Wh+1.16Wh+44.67mWh'
+    gasoline='0.01tsp+0.03tsp+296μL ~ 0.53tsp+0.03tsp+296μL'
+    -->
+    <b>
+      {%- capture energyUsage-generate8Images-plusOverhead %}
+        {%- include energy-units.html
+          joules='6.11 ~ 88.11 kJ'
+          watt-hours='1.69 ~ 24.46 Wh'
+          gasoline='0.10 ~ 0.62 tsp'
+        %}
+      {%- endcapture %}
+      {{- energyUsage-generate8Images-plusOverhead -}}
+    </b>
+  <figcaption role="aside" class="specifier">for 1 person to generate <strong>8</strong> images</figcaption>
+</figure>
 
 
 
@@ -435,45 +547,217 @@ Well, numbers are barely worth anything on their own; let's get to comparing the
 
 Seems we have everything we need to make a conclusion!
 
-To recap, a single person's Fortnite session takes **3.63 ~ 6.05 MJ** for the client, **7.87 J** for the server, and **917.6 KJ** for the human; whereas a single person generating 8 images takes **1.76 ~ 83.76 KJ** to generate the images, and **4.19 KJ to hammer in the prompt**. Why 8? Well, most image generators give batches of 4 or so images so I'm being charitable to Fortnite and saying the user asks for 8.
+To recap, a single person's Fortnite session takes **{{ energyUsage-fortnite-client-perSession }}** for the client, **{{ energyUsage-fortnite-server-perSession }}** for the server, and **{{ energyUsage-humanBody-fortniteSession }}** for the human; whereas generating 1 image takes **{{ energyUsage-generate8Images }}**, and let's say you're using that iMac I mentioned above which uses **{{ energyUsage-averageDevice-perMinute }}** per minute, and it takes you 1 minute to generate 8 images, and **{{ energyUsage-humanBody-1KCal }}** to hammer in the prompt.
 
 Adding those together and making sure we use the same units for both, drumroll please:
 
 <div class="flex-row flex-wrap">
   <figure class="energy-usage card">
     <b>{% include energy-units.html
-      joules='4.55 ~ 6.97 MJ'
-      watt-hours='1.26 ~ 1.94 kWH'
-      gasoline='28.71 ~ 44.21 tsp'
+      joules='1.522 MJ'
+      watt-hours='422.78 Wh'
+      gasoline='9.63 tsp'
     %}</b>
-      <figcaption role="aside" class="specifier">per Fortnite session</figcaption>
+    <figcaption role="aside" class="specifier">per Fortnite session</figcaption>
   </figure>
   <figure class="energy-usage card">
-    <b>{% include energy-units.html
-      joules='5.95 ~ 14.66 KJ'
-      watt-hours='1.65 ~ 4.07 Wh'
-      gasoline='0.04 ~ 0.09 tsp'
-    %}</b>
-      <figcaption role="aside" class="specifier">per 8 generated images</figcaption>
+    <b>{{ energyUsage-generate8Images-plusOverhead }}</b>
+    <figcaption role="aside" class="specifier">per 8 generated images</figcaption>
   </figure>
 </div>
 
-Meaning that **Fortnite uses between 310.37 ~ 1171.43 times more energy than image generators**, with the median being somewhere around <!--475.44338336 ~ 764.70588235--> 620, so we can finally say:
+<!--
+Fortnite / Generator:
+  1.522MJ / 14.66kJ = 103.82
+  1.522MJ / 5.95kJ  = 255.8
+  
+Mean:
+  (103.82+255.8)/2 = 179.81
+-->
+
+Meaning that **Fortnite uses between 104 ~ 256 times more energy than image generators**, with the mean being somewhere around 180, so we can finally say:
 
 
 <figure class="big energy-usage card">
-    <span class="specifier">Fornite takes</span>
-    <b>620×</b>
-    <span class="specifier">more energy than image generators</span>
-    <aside>1 Fortnite session vs generating 8 images</aside>
+    <span class="specifier">Fortnite takes</span>
+    <b>180×</b>
+    <figcaption class="specifier">more energy than image generators</figcaption>
+    <aside><strong>1</strong> Fortnite session vs generating <strong>8</strong> images</aside>
 </figure>
 
-That means the energy it takes to play 1 Fortnite session could generate **~4,960 images!**
+That means the energy it takes to play 1 Fortnite session could generate **~1,440 images!**
 
 
 
 <!-- markdownlint-disable-next-line MD025 -->
-# But wait, the training tho!
+
+# Just Commission An Artist!
+
+So maybe that all leaves a sour taste in your mouth. To heck with image generators! You're just gonna have an artist make the image for you.
+
+Well we already know how much energy their device would be using. We're still assuming they're using that one iMac. Now we just have to figure out:
+
+1. How much energy does it take to draw an art commission?
+2. How much energy do drawing programs use?
+3. How long does it take to draw an art commission, on average?
+
+For this one, I'll just say that #3 is "1 hour", because that seems very charitable and reasonable for these estiamtes. If the average is longer than that, then so be it, but I can't imagine it's shorter.
+
+
+
+## Back To Measuring A Human Body
+
+How much energy does an artist's body use while drawing? It's surely more than typing a prompt, but less than twitch-response gaming.
+[According to Scientific American][Scientific American: Does Thinking Really Hard Burn More Calories?], although mental effort _does_ increase exhaustion, it _doesn't_ notably affect calories burned. So, we'll only be looking at how much their body is moving.
+
+Let's assume the artist is doing traditional painting-style art. Brush on canvas, stylus on tablet, etc.. [According to Drawing Wars][Drawing Wars: Does Painting Burn Calories?], that's about 180 KCal per hour. I'll take their word for that!
+
+<figure class="energy-usage card">
+  <b>
+    {%- capture energyUsage-humanBody-drawingArt %}
+      {%- include energy-units.html
+        joules='754.2 kJ'
+        watt-hours='209.5 Wh'
+        gasoline='4.77 tsp'
+      %}
+    {%- endcapture %}
+    {{- energyUsage-humanBody-drawingArt -}}
+    </b>
+  <figcaption role="aside" class="specifier">drawing art for 1 hour</figcaption>
+</figure>
+
+
+
+## Energy Usage of an Art Program
+
+We measured how much energy a latent-diffusion image generator uses, so now let's see how much energy a drawing program uses.
+
+To be honest, it's no surprise that nobody has ever measured this (please let me know if I'm wrong, but I can't find any such measurements).
+
+However, it's [well-known](https://community.adobe.com/t5/photoshop-ecosystem-discussions/photoshop-23-5-high-cpu-usage/td-p/13148964) [that Photoshop](https://community.adobe.com/t5/photoshop-ecosystem-discussions/photoshop-using-significant-energy-while-closed-macbook-pro-m1/td-p/14537085) [uses a lot](https://community.adobe.com/t5/photoshop-ecosystem-discussions/adobe-photoshop-not-responding-very-high-power-usage/td-p/12129227) [of energy](https://community.adobe.com/t5/photoshop-ecosystem-discussions/newer-photoshop-version-draining-battery-high-wattage-usage-any-tips/m-p/14506296). So let's look back at the section about energy usage of video games. I'll take the measurement of Unreal Engine we used earlier since they did work to make that more efficient, and say it uses **~168 Watts**, meaning:
+
+
+<figure class="energy-usage card">
+  <b>
+    {%- capture energyUsage-photoshop-perHour %}
+      {{- energyUsage-fortnite-client-perSession -}}
+    {%- endcapture %}
+    {{- energyUsage-photoshop-perHour -}}
+  </b>
+  <figcaption role="aside" class="specifier">To use Photoshop for 1 hour. <br/>Probably.</figcaption>
+</figure>
+
+
+
+## Putting These Together
+
+To make things easier on ourselves, let's say that this artist always takes exactly 1 hour to draw the art, and that your request was just sending them a single sentence over text (**{{ energyUsage-humanBody-1KCal }}**), and assuming the artist is using Photoshop at about the same power usage as Fortnite (**{{ energyUsage-photoshop-perHour }}**), and that they're doing this for free. So we have our numbers!
+
+Adding these up, we get:
+
+<figure class="energy-usage card">
+  <b>
+    <!--
+          artist body:  754.20 kJ
+          art program:  604.80 kJ
+    commissioner body: +  4.19 kJ
+    =============================
+                total: 1363.19 kJ
+    -->
+    {%- capture energyUsage-commissionArtist %}
+      {%- include energy-units.html
+        joules='1.36 MJ'
+        watt-hours='377.8 Wh'
+        gasoline='8.61 tsp'
+      %}
+    {%- endcapture %}
+    {{- energyUsage-commissionArtist -}}
+    </b>
+  <figcaption role="aside" class="specifier">to commission an artist for 1 image</figcaption>
+</figure>
+
+Meaning that **commissioning art uses between 15.4 ~ 224.3 times more energy than image generators**, with the mean being somewhere around 120, so we can say:
+
+<figure class="big energy-usage card">
+    <span class="specifier">Commissioning an artist takes about</span>
+    <b>120×</b>
+    <figcaption class="specifier">more energy than image generators</figcaption>
+    <aside>Commissioning <strong>1</strong> artwork vs generating <strong>8</strong> images</aside>
+</figure>
+
+
+
+
+
+
+# Just google a real image!
+
+Well, if you don't like that it takes {{ energyUsage-generate8Images-plusOverhead }} to generate an image or {{ energyUsage-commissionArtist }} to commission one, maybe you should Google existing images instead!
+
+{%- capture energyUsage-googleSearch-2009 %}
+  {%- include energy-units.html
+    joules='1.08 kJ'
+    watt-hours='0.3 Wh'
+    gasoline='33.7 µL'
+  %}
+{%- endcapture %}
+{%- capture energyUsage-googleSearch-2019 %}
+  {%- include energy-units.html
+    joules='36 kJ'
+    watt-hours='10 Wh'
+    gasoline='0.23 tsp'
+  %}
+{%- endcapture %}
+
+[According to Google][Google: Powering a Google Search], a Google search in 2009 took about **{{ energyUsage-googleSearch-2009 }}** of energy.
+[A 2019 article by Full Fact][Full Fact: How energy intensive is a Google search?] discusses a claim by The Times that a single Google search takes enough energy to "power a low-energy light bulb for an hour", which the article then goes on to interpret as about **{{ energyUsage-googleSearch-2019 }}**.
+
+Assuming that all the fancy info cards and such increased the energy usage since 2009, I'll go with the newer figure. I'll also ignore the [AI Overview bullshit][Google is Smart] for now.
+
+So assuming you go directly to images.google.com and search from there and that uses **{{ energyUsage-googleSearch-2019 }}**, and it takes you 1 minute to find the image you want and you don't have to do a second search, and you're using that iMac from earlier which uses **{{ energyUsage-averageDevice-perMinute }}** per minute, and you're _really_ hammering in that search query which uses **{{- energyUsage-humanBody-1KCal -}}**, and you're using Magical Internet that takes zero energy to transmit data:
+
+<figure class="energy-usage card">
+  <!--
+  image search:  36.00 kJ
+        device: 160.00 J
+          body:   4.19 kJ
+  =======================
+         total:  40.35 kJ
+  -->
+  <b>
+    {%- capture energyUsage-googleSearch-2019-plusOverhead %}
+      {%- include energy-units.html
+        joules='40.35 kJ'
+        watt-hours='11.21 Wh'
+        gasoline='0.32 tsp'
+      %}
+    {%- endcapture %}
+    {{- energyUsage-googleSearch-2019-plusOverhead -}}
+  </b>
+  <figcaption role="aside" class="specifier">to find 1 image on Google</figcaption>
+</figure>
+
+Which, when compared to generating **8** images taking {{ energyUsage-generate8Images-plusOverhead }}, means that Googling an image takes between 0.46 ~ 6.6 times as much energy as generating 8 images. Taking the mean of those, we get:
+
+<figure class="big energy-usage card">
+    <span class="specifier">Googling takes about</span>
+    <b>3.5×</b>
+    <span class="specifier">more energy than image generators</span>
+    <aside>Googling <strong>1</strong> image vs generating <strong>8</strong> images</aside>
+</figure>
+
+That means the energy it takes to google 1 image could generate **~22 images!**
+
+Nowhere near the difference we saw with comparing to Fortnite or artists, but we all expected that a single Google search takes less energy than those.
+
+Still, it's important to note that this is the first comparison we've done where the most-energy-intensive estimate for generating 8 images is higher than this, though the low-estimate is still notably lower.
+
+
+
+
+
+
+# But Wait, The Training Tho!
 
 Ahhhh, if you thought this, I commend you. Training an image generator is a significant amount of energy that shouldn't be discounted.
 
@@ -627,143 +911,47 @@ So in total, you get between:
 
 
 
-# Just commission an artist!
-
-So maybe that all leaves a sour taste in your mouth.
-
-
-
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-**TODO**
-
-
-
-
-
-
-# Just google it and use a real image!
-
-Well, if you don't like that it takes {% include energy-units.html
-  joules='5.95 ~ 14.66 KJ'
-  watt-hours='1.65 ~ 4.07 Wh'
-  gasoline='0.04 ~ 0.09 tsp'
-%} to generate an image, you might think that you should Google existing images instead!
-
-[According to Google][Google: Powering a Google Search], a Google search in 2009 took about {% include energy-units.html
-  joules='??? J'
-  watt-hours='0.3 Wh'
-  gasoline='??? tsp'
-%} of energy.
-[A 2019 article by Full Fact][Full Fact: How energy intensive is a Google search?] discusses a claim by The Times that a single Google search takes enough energy to "power a low-energy light bulb for an hour", which the article then goes on to interpret as about {% include energy-units.html
-  joules='36 kJ'
-  watt-hours='10 Wh'
-  gasoline='0.23 tsp'
-%}.
-
-Assuming that all the fancy info cards and such increased the energy usage since 2009, I'll go with the higher figure. I'll also ignore the [AI Overview bullshit][Google is Smart] for now.
-
-So assuming you go directly to images.google.com and search from there and that uses **{% include energy-units.html
-  joules='36 kJ'
-  watt-hours='10 Wh'
-  gasoline='0.23 tsp'
-%}**, and it takes you 1 minute to find the image you want and you don't have to do a second search, and you're using that iMac from earlier which uses {% include energy-units.html
-  joules='9.65 kJ'
-  watt-hours='2.68 Wh'
-  gasoline='0.06 tsp'
-%} per hour (**{% include energy-units.html
-  joules='160 J'
-  watt-hours='44.67 mWh'
-  gasoline='296 µL'
-%}** per minute), and you're _really_ hammering in that search query which uses {% include energy-units.html
-  joules='4.19 KJ'
-  watt-hours='1.16 Wh'
-  gasoline='0.03 tsp'
-%}, and you're using Magical Internet that takes zero energy to transmit data:
-
-<figure class="energy-usage card">
-    <b>{% include energy-units.html
-      joules='40.35 kJ'
-      watt-hours='11.21 Wh'
-      gasoline='0.32 tsp'
-    %}</b>
-    <figcaption role="aside" class="specifier">to find 1 image on Google</figcaption>
-</figure>
-
-Which, when compared to generating **8** images taking _at most_ {% include energy-units.html
-  joules='14.66 KJ'
-  watt-hours='4.07 Wh'
-  gasoline='0.09 tsp'
-%}:
-
-<figure class="big energy-usage card">
-    <span class="specifier">Googling takes at least</span>
-    <b>2.8×</b>
-    <span class="specifier">more energy than image generators</span>
-    <aside>Googling 1 image vs generating <strong>8</strong> images</aside>
-</figure>
-
-That means the energy it takes to google 1 image could generate **~22 images!**
-
-Nowhere near the difference we saw with comparing to Fortnite, but we all expected that a single Google search takes less energy than 1hr of Fortnite gaming.
-
-
 
 # For comparison
 
-To wrap up this article, let's take a look at some more things that are measured in Gigajoules:
+To wrap up this article, let's take a look at some more things that are measured in {% include energy-units.html
+  joules='Gigajoules'
+  watt-hours='Megawatt-hours'
+  gasoline='tens of gallons of gasoline'
+%}:
 
 
 
 <div class="flex-row flex-wrap">
   <figure class="energy-usage card">
-      <!--
-      commute: 42mi/d
-      57.5~75.0 kWh battery, 272~333-mile range = 0.2114~0.2252 kWh/mi = 7.991~8.514 GJ/yr commute
+    <!--
+      Average commute distances for 10 USA cities: (11.51+10.78+10.28+9.44+9.32+9.01+9.01+7.79+7.56+5.47)/10 = 9.017mi/d * 2 = 18.034mi/d
+      57.5~75.0 kWh battery, 272~333-mile range = TODO
       -->
       <b>{% include energy-units.html
-        joules='8.0 ~ 8.5 GJ'
-        watt-hours='???'
-        gasoline='???'
+        joules='TODO GJ'
+        watt-hours='TODO MWh'
+        gasoline='TODO gallons'
       %}</b>
       <figcaption role="aside" class="specifier">avg. Tesla Model 3 yearly commute</figcaption>
   </figure>
 
-  <figure class="energy-usage card">
-      <!--
-      commute: 42mi/d
-      57.5~75.0 kWh battery, 272~333-mile range = 0.2114~0.2252 kWh/mi = 7.991~8.514 GJ/yr commute
-      -->
-      <b>TODO GJ</b>
-      <figcaption role="aside" class="specifier">avg. traffic light energy use per yearly commute</figcaption>
-  </figure>
+  <!--figure class="energy-usage card">
+      <!-
+      commute: 18.034mi/d
+      lights: 4~8 / 10mi = 0.4~0.8/mi
+      lights/commute: 7.2136~14.4272
+      light-wait-percent: ~7% of trip time
+      commute-time: (58+57+57+55+53+52+50+50+50+45)/10 = 52.7min * 2 = 105.4min
+      light-wait/commute: 7.378min
+      light-wait/year: 7.378min * 365.24219 = 2694.8min = 1.8714 days
+      light-energy: 100W
+      light-energy/commute: 100W/7.378min = 44.268 kJ (12.297 Wh)
+      light-energy/year: 100W/2694.8min = 16.169 MJ (4.4913 kWh)
+      ->
+      <b>16.169 MJ</b>
+      <figcaption role="aside" class="specifier">avg. traffic lights per year per commuter</figcaption>
+  </figure-->
 
   <figure class="energy-usage card">
     <b>{% include energy-units.html
@@ -790,16 +978,29 @@ To wrap up this article, let's take a look at some more things that are measured
       gasoline='12.36 gallons'
       %}</b>
     <figcaption role="aside" class="specifier">
-      <p>avg. yearly 6-can microfridge energy usage</p>
-      <p>(about the same as a full-size kitchen fridge)</p>
+      avg. yearly 6-can microfridge energy usage<br/>
+      (about the same as a full-size kitchen fridge)
     </figcaption>
   </figure>
   
   <figure class="energy-usage card">
+    <!--
+    283,400,986 vehicles
+    3,211,120,000,000 vehicle-miles driven
+    11,330.66 miles/vehicle
+    ---
+    212.7 kWh battery
+    343-mile range
+    1.61 mi/kWh
+    0.62 kWh/mi
+    ---
+    0.62 kWh/mi * 11,000 mi
+    6820 kWh
+    -->
     <b>{% include energy-units.html
-      joules='TODO'
-      watt-hours='???'
-      gasoline='???'
+      joules='24.6 GJ'
+      watt-hours='6.82 MWh'
+      gasoline='186.4 gallons'
     %}</b>
       <figcaption role="aside" class="specifier">Driving a Hummer HEV for 1 year</figcaption>
   </figure>
@@ -807,10 +1008,88 @@ To wrap up this article, let's take a look at some more things that are measured
 
 
 <aside markdown=1>
-Sources: [Tesla Model 3 stats], TODO, [Household energy usage], the sticker on the back of a Frigidaire EFMIS129
+Sources: [Tesla Model 3 stats], [LandLine: Traffic Signals], [Moovit Public Transit Index], [Short-Fact: How much energy do traffic lights use?], [Household energy usage], the sticker on the back of a Frigidaire EFMIS129, [InsideEVs: 2022 Hummer EV Range Test], [USA DoT: 2022 Highway Statistics]
 </aside>
 
 
+
+# The Meta
+
+I spent about **72 hours** total writing this article. Well, probably more since I started 2024-07-05, but I don't want to think about that lol...
+
+I also used various search engines to find the **47+ Internet sources** linked in this article. I feel like I had to do **~3 searches per source** on average so we'll say I performed the equivalent of **140 Google searches**.
+
+I'm gonna ignore how much energy each of those sites takes, all the editing software, the server software, the browser I use and its dev tools, the many Telegram discussions with friends...
+I'll just look at the high-level view of how much energy the research for this blogpost took:
+
+<figure class="energy-usage card">
+    <span class="specifier">This article took at least</span>
+    <b>{% include energy-units.html
+      joules='6.65 ~ 7.75 MJ'
+      watt-hours='1.85 ~ 2.15 kWh'
+      gasoline='42.07 ~ 49.05 tsp'
+    %}</b>
+    <span class="specifier">to research</span>
+    <aside>Typing & using device for ~72 hours + ~140 Google searches</aside>
+</figure>
+
+Which is about 87.7 ~ 1274× the energy of generating 8 images, with the median being:
+
+<figure class="big energy-usage card">
+    <span class="specifier">Researching this article took at least</span>
+    <b>590×</b>
+    <span class="specifier">more energy than generating <strong>8</strong> images</span>
+</figure>
+
+That's about the same as generating 5,000 images! 🤯
+
+
+
+
+
+## Sources
+
+1. [DALL-E][DALL-E]
+2. [Stable Diffusion][Stable Diffusion]
+3. [Power Hungry Processing: Watts Driving the Cost of AI Deployment?][Power Hungry Processing: Watts Driving the Cost of AI Deployment?]
+4. [Forbes: Top 10 Best-Selling Smartphones 2024][Forbes: Top 10 Best-Selling Smartphones 2024]
+5. [Insider Monkey: 15 Best Selling Laptops in 2023][Insider Monkey: 15 Best Selling Laptops in 2023]
+6. [PCMag: The Best Gaming PCs for 2024][PCMag: The Best Gaming PCs for 2024]
+7. [Qualcomm: Snapdragon 8 Gen 3 Mobile Platform][Qualcomm: Snapdragon 8 Gen 3 Mobile Platform]
+8. [CPU-Monkey: Apple A17 Pro][CPU-Monkey: Apple A17 Pro]
+9. [Notebookcheck: iPhone 15 Pro][Notebookcheck: iPhone 15 Pro]
+10. [Notebookcheck: AMD Ryzen 3 7320U][Notebookcheck: AMD Ryzen 3 7320U]
+11. [Notebookcheck: AMD Radeon 610M][Notebookcheck: AMD Radeon 610M]
+12. [Notebookcheck: MacBook Air M1][Notebookcheck: MacBook Air M1]
+13. [Notebookcheck: Intel Core i9 14900K][Notebookcheck: Intel Core i9 14900K]
+14. [Notebookcheck: Nvidia RTX 4090][Notebookcheck: Nvidia RTX 4090]
+15. [Notebookcheck: Apple M4][Notebookcheck: Apple M4]
+16. [Nvidia: RTX 4090 specs][Nvidia: RTX 4090 specs]
+17. [Wikipedia: Apple M4][Wikipedia: Apple M4]
+18. [Geeky Gadgets: AMD Ryzen 3 7320U][Geeky Gadgets: AMD Ryzen 3 7320U]
+19. [Unreal Engine][Unreal Engine]
+20. [Reducing Fortnite’s Power Consumption][Reducing Fortnite’s Power Consumption]
+21. [Fortnite weekly usage][Fortnite weekly usage]
+22. [Server room power consumption][Server room power consumption]
+23. [Fortnite player count][Fortnite player count]
+24. [MMOStats][MMOStats]
+25. [Calculate datacenter server power usage][Calculate datacenter server power usage]
+26. [Fortnite Servers – All 8 Locations and Why Ping is Important][Fortnite Servers – All 8 Locations and Why Ping is Important]
+27. [Calories Burned Playing Video Games][Calories Burned Playing Video Games]
+28. [BLOOMz][BLOOMz]
+29. [Tesla Model 3 stats][Tesla Model 3 stats]
+30. [Household energy usage][Household energy usage]
+31. [Desktop computer energy usage][Desktop computer energy usage]
+32. [Scientific American: Does Thinking Really Hard Burn More Calories?][Scientific American: Does Thinking Really Hard Burn More Calories?]
+33. [Drawing Wars: Does Painting Burn Calories?][Drawing Wars: Does Painting Burn Calories?]
+34. [Google: Powering a Google Search][Google: Powering a Google Search]
+35. [Full Fact: How energy intensive is a Google search?][Full Fact: How energy intensive is a Google search?]
+36. [Google is Smart][Google is Smart]
+37. [LandLine: Traffic Signals][LandLine: Traffic Signals]
+38. [Moovit Public Transit Index][Moovit Public Transit Index]
+39. [InsideEVs: 2022 Hummer EV Range Test][InsideEVs: 2022 Hummer EV Range Test]
+40. [USA DoT: 2022 Highway Statistics][USA DoT: 2022 Highway Statistics]
+41. [Short-Fact: How much energy do traffic lights use?][Short-Fact: How much energy do traffic lights use?]
 
 
 
@@ -851,7 +1130,15 @@ Sources: [Tesla Model 3 stats], TODO, [Household energy usage], the sticker on t
 [Household energy usage]: https://greenbuildingcanada.ca/whats-considered-energy-efficient-home/
 [Desktop computer energy usage]: https://sustainability.stackexchange.com/questions/5600/how-much-power-does-an-idle-pc-use
 
+[Scientific American: Does Thinking Really Hard Burn More Calories?]: https://www.scientificamerican.com/article/thinking-hard-calories/
+[Drawing Wars: Does Painting Burn Calories?]: https://www.drawingwars.com/does-painting-burn-calories
 
 [Google: Powering a Google Search]: https://googleblog.blogspot.com/2009/01/powering-google-search.html
 [Full Fact: How energy intensive is a Google search?]: https://fullfact.org/environment/google-search/
 [Google is Smart]: https://t.me/s/googleissmart
+
+[LandLine: Traffic Signals]: https://landline.media/report-reveals-how-much-time-is-being-wasted-at-traffic-signals/
+[Moovit Public Transit Index]: https://moovitapp.com/insights/en/Moovit_Insights_Public_Transit_Index-countries
+[InsideEVs: 2022 Hummer EV Range Test]: https://insideevs.com/reviews/612030/hummer-ev-range-test/
+[USA DoT: 2022 Highway Statistics]: https://www.fhwa.dot.gov/policyinformation/statistics/2022/
+[Short-Fact: How much energy do traffic lights use?]: https://short-fact.com/how-much-electricity-do-traffic-lights-use/

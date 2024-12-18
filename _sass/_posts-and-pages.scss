@@ -102,9 +102,32 @@
     }
 
     h1 {
-        margin-block-start: 4em;
+        margin-block-start: 5em;
+        position: relative;
+        
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: -1ex;
+            width: calc(100% + 2ex);
+            
+            border-radius: 0.25ex;
+            margin-block-start: 4em;
+            border-bottom: 0.5ex solid color-mix(in srgb, currentColor 20%, transparent);
+        }
     }
-
+    
+    .posts &,
+    header {
+        h1 {
+            &::before {
+                content: unset;
+            }
+        }
+    }
+    
     header h1 {
         margin: var(--header-margin-block) var(--header-margin-inline);
         padding: 0;
