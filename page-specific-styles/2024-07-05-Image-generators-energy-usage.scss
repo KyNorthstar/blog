@@ -66,3 +66,22 @@
     margin-inline: auto;
     border-radius: 0 0 1em 1em;
 }
+
+
+.content-switcher [selected] {
+    color: var(--dark-theme-foreground-color);
+    background: var(--dark-theme-background-color);
+    
+    &[data-energy-unit-option="joules"] {
+        background: linear-gradient(to bottom, var(--material-indigo-a200), var(--material-indigo-700));
+    }
+    
+    &[data-energy-unit-option="watt-hours"] {
+        background: linear-gradient(to bottom, var(--material-amber-a400), var(--material-amber-900));
+        color: var(--light-theme-foreground-color);
+    }
+    
+    &[data-energy-unit-option="gasoline"] {
+        background: linear-gradient(to bottom, var(--material-red-a200), var(--material-red-a700));
+    }
+}

@@ -12,3 +12,17 @@
 .show-only-when-js-is-enabled {
     display: none !important;
 }
+
+
+
+@media print {
+    .show-only-when-js-is-enabled {
+        display: none !important;
+    }
+}
+
+
+
+.chips .chip {
+    border-width: 0;
+}

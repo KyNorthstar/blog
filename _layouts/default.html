@@ -17,7 +17,7 @@
     -->
 <head>
     {% include page-transitions-header-tippity-top-content.html %}
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.author.name }} – {{ site.description }}</title>
+    <title>{% if page.title -%} {{ page.title }} – {{ site.name }} {%- else -%} {{ site.title }} {%- endif %}</title>
 
     {% include meta.html %}
 
@@ -70,7 +70,6 @@
         $("html").removeClass("reduce-motion")
     })
     </script>
-    {% include page-transitions-header-content.html %}
 </head>
 
 <body {%- if page.special-theme-name %} class="{% for class-name in page.special-theme-name %}{{ class-name }}{% endfor %}" {%- endif %}>

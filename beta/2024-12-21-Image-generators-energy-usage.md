@@ -3,11 +3,12 @@ title: On the energy usage of image generators
 social-preview-image: /images/AI vs Fortnite.png
 excerpt: Is AI is killing the environment because it takes so much energy to generate its output?
 
-date: 2024-12-02 MT
+date: 2024-12-19 MT
 
 authors:
     - The Arx
     - Chris
+    - Eevie
     - Revue
 
 categories:
@@ -24,6 +25,7 @@ page-specific-stylesheets:
 ---
 
 > AI is killing the environment because it takes so much energy to generate its output
+{:.big}
 
 If you have heard or said something similar to this, did you challenge it? Did you investigate this claim to see how true it really is?
 
@@ -55,7 +57,7 @@ i for one get a lot of joy from asking bing ai to generate ‘lightning mcqueen 
 
 As much as I don't really wanna write about Fortnite, it does happen to be a good example here because it's currently a notably-popular online game at time of writing, and we are trying our best to compare apples to apples here.
 
-So, with that said, let's crunch these numbers.
+So, with that said, let's do some research and crunch these numbers!
 
 
 
@@ -67,7 +69,7 @@ It's using electricity to do everything it does.
 
 The type of device varies wildly, ranging from power-sipping watches to massive gaming rigs & servers, so let's get some reasonable (and charitable) expectations set.
 
-I'll assume you're using a common new smartphone/laptop/desktop. I'll only look at the top sellers, too, to get the most-generalizable stats.
+I'll assume you're using a common new smartphone/laptop/desktop. I'll only look at the top sellers, too, to get the most-general stats.
 
 <ul class="show-only-when-js-is-enabled   plain inline content-switcher chips"
         data-switched-element-selector="[data-energy-unit]"
@@ -265,7 +267,7 @@ Taking these together, I can safely assume:
     <b>{% include energy-units.html
       joules='72 J ~ 4.56 MJ'
       watt-hours='20 mWh ~ 1.27 kWh'
-      gasoline='2.46 µL ~ 0.6 cup'
+      gasoline='2.46 µL ~ 28.83 tsp'
     %}</b>
       <figcaption role="aside" class="specifier">every hour</figcaption>
   </figure>
@@ -280,15 +282,15 @@ Taking these together, I can safely assume:
   </figure>
 </div>
 
-That's... a very wide range, and you're definitely not using at 100% all the time, so I'll be reasonable and say it's probably somewhere in the middle. **Let's go with what that iMac uses at idle**:
+That's... a very wide range. You're definitely not using at 100% all the time, so I'll be reasonable and say it's probably somewhere in the middle. **Let's go with what that iMac uses at idle**:
 <div class="flex-row flex-wrap">
   <figure class="energy-usage card">
     <b>
       {%- capture energyUsage-averageDevice-perMinute %}
         {%- include energy-units.html
-          joules='160 J'
-          watt-hours='44.67 mWh'
-          gasoline='296 µL'
+          joules='161 J'
+          watt-hours='44.68 mWh'
+          gasoline='5 µL'
         %}
       {%- endcapture %}
       {{- energyUsage-averageDevice-perMinute -}}
@@ -337,9 +339,9 @@ Now. It takes less energy for a human to type a prompt into the text field of an
 
 I found [a website][Calories Burned Playing Video Games] which attempts to give estimates for Kilocalories burned by playing video games, above the base KCals that humans burn just existing. The thing is, this website focuses on "traditional video game" versus video games designed to promote fitness, like Wii Fit and DDR.
 
-Well that just brings us back to the Minesweeper vs Cyberpunk problem!
+Well that isn't exactly what we're looknig for...
 
-Alright, let's make an educated guess and assume a Fortnite session is comparable to a light-to-moderate Wii Fit session. Splitting the difference, that's something like **219 KCal** above human base. That works out to:
+Alright, let's make an educated guess and assume a 1-hour Fortnite session is comparable to a light-to-moderate 15-minute Wii Fit session. Splitting the difference, that's something like **219 KCal** above human base. That works out to:
 
 <figure class="energy-usage card">
   <b>
@@ -355,7 +357,7 @@ Alright, let's make an educated guess and assume a Fortnite session is comparabl
     <figcaption role="aside" class="specifier">per Fortnite session</figcaption>
 </figure>
 
-And uh... I'll say that typing a sentence is negligibly above base. Let's toss it a token 1 KCal just to level the playfield a bit. Y'know, imagine you're really hammering those keys:
+And uh... I'll say that typing a sentence is negligibly above base. Let's toss it a token 1 KCal just to level the playfield a bit. Y'know, imagine you're _really_ hammering those keys:
 
 <figure class="energy-usage card">
   <b>
@@ -375,7 +377,7 @@ And uh... I'll say that typing a sentence is negligibly above base. Let's toss i
 
 ## The Energy Usage of Online Gaming
 
-The Tumblr post at the top of this blogpost seems concerned with comparing image generation to online gaming (and one user specifically mentions Fortnite).
+The Tumblr post at the top of this blogpost seems concerned with comparing image generation to online gaming (and specifically mentions Fortnite).
 
 Well there's 2 components to this: the players' devices and the server they're connecting to, so let's dig in.
 
@@ -444,13 +446,17 @@ I had to crunch a few sources for this one:
 
 So the basic thing you need to know is that video game servers are usually pretty generic these days. A video game company like Epic pays a server hosing company like AWS to host it for them... So we'll be looking at some generic numbers here.
 
-Being charitable and **assuming they're really efficient**, we can say that one server uses {% include energy-units.html
+{%- capture energyUsage-fortnite-serverTotal-perSession %}
+{%- include energy-units.html
   joules='1.8 MJ'
   watt-hours='500 Wh'
   gasoline='11.39 tsp'
-%}. But remember, we're just looking at 1 person playing 1 game of Fortnite on 1 server, so we have to figure out how to divide that up.
+%}
+{%- endcapture %}
 
-At time of writing, the 24-hour peak Fortnite player count is 1,829,292 concurrent players. Since there's 8 Fortnite server locations (let's pretend each location just as 1 physical server so we don't lose our minds in the weeds), that's about 228,661 players per server. So dividing up 1.8 MJ across 228,661 players finally gets us:
+Being charitable and **assuming they're really efficient**, we can say that one server uses {{ energyUsage-fortnite-serverTotal-perSession }} for a 1-hour Fortnite session. But remember, we're just looking at 1 person playing 1 game of Fortnite on 1 server, so we have to figure out how to divide that up.
+
+At time of writing, the 24-hour peak Fortnite player count is 1,829,292 concurrent players. Since there's 8 Fortnite server locations (let's pretend each location is just 1 physical server so we don't lose our minds in the weeds), that's about 228,661 players per server. So dividing up {{ energyUsage-fortnite-serverTotal-perSession }} across 228,661 players finally gets us:
 
 <div class="flex-row flex-wrap">
   <figure class="energy-usage card">
@@ -459,7 +465,7 @@ At time of writing, the 24-hour peak Fortnite player count is 1,829,292 concurre
         {%- include energy-units.html
           joules='7.87 J'
           watt-hours='2.18 mWh'
-          gasoline='0.24 μL'
+          gasoline='0.25 μL'
         %}
       {%- endcapture %}
       {{- energyUsage-fortnite-server-perSession -}}
@@ -472,7 +478,7 @@ At time of writing, the 24-hour peak Fortnite player count is 1,829,292 concurre
           {%- include energy-units.html
             joules='47.22 ~ 78.70 J'
             watt-hours='13.08 ~ 21.80 mWh'
-            gasoline='1.44 ~ 2.40 μL'
+            gasoline='1.47 ~ 2.46 μL'
           %}
         {%- endcapture %}
         {{- energyUsage-fortnite-server-perWeek -}}
@@ -505,7 +511,7 @@ I found [a paper from June 2024][Power Hungry Processing: Watts Driving the Cost
       {%- include energy-units.html
         joules='0.22 ~ 10.47 kJ'
         watt-hours='0.06 ~ 2.91 Wh'
-        gasoline='6.74 ~ 326.90 μL'
+        gasoline='6.74 ~ 326.53 μL'
       %}
     {%- endcapture %}
     {{- energyUsage-generate1Image -}}
@@ -514,8 +520,8 @@ I found [a paper from June 2024][Power Hungry Processing: Watts Driving the Cost
 </figure>
 {%- capture energyUsage-generate8Images %}
   {%- include energy-units.html
-    joules='1.76 ~ 83.76 kJ'
-    watt-hours='0.48 ~ 23.28 Wh'
+    joules='1.73 ~ 83.72 kJ'
+    watt-hours='0.48 ~ 23.26 Wh'
     gasoline='0.01 ~ 0.53 tsp'
   %}
 {%- endcapture %}
@@ -531,9 +537,9 @@ Now to figure out how much energy it takes for _you_ to generate 8 images, we ad
     <b>
       {%- capture energyUsage-generate8Images-plusOverhead %}
         {%- include energy-units.html
-          joules='6.11 ~ 88.11 kJ'
-          watt-hours='1.69 ~ 24.46 Wh'
-          gasoline='0.10 ~ 0.62 tsp'
+          joules='6.08 ~ 88.32 kJ'
+          watt-hours='1.69 ~ 24.53 Wh'
+          gasoline='0.04 ~ 0.56 tsp'
         %}
       {%- endcapture %}
       {{- energyUsage-generate8Images-plusOverhead -}}
@@ -547,7 +553,7 @@ Now to figure out how much energy it takes for _you_ to generate 8 images, we ad
 
 Seems we have everything we need to make a conclusion!
 
-To recap, a single person's Fortnite session takes **{{ energyUsage-fortnite-client-perSession }}** for the client, **{{ energyUsage-fortnite-server-perSession }}** for the server, and **{{ energyUsage-humanBody-fortniteSession }}** for the human; whereas generating 1 image takes **{{ energyUsage-generate8Images }}**, and let's say you're using that iMac I mentioned above which uses **{{ energyUsage-averageDevice-perMinute }}** per minute, and it takes you 1 minute to generate 8 images, and **{{ energyUsage-humanBody-1KCal }}** to hammer in the prompt.
+To recap, a single person's Fortnite session takes **{{ energyUsage-fortnite-client-perSession }}** for the client, **{{ energyUsage-fortnite-server-perSession }}** for the server, and **{{ energyUsage-humanBody-fortniteSession }}** for the human; whereas generating **8** image takes **{{ energyUsage-generate8Images }}**, and we're saying you're using that iMac which uses **{{ energyUsage-averageDevice-perMinute }}** per minute, and it takes you 1 minute to generate 8 images, and **{{ energyUsage-humanBody-1KCal }}** to hammer in the prompt.
 
 Adding those together and making sure we use the same units for both, drumroll please:
 
@@ -555,8 +561,8 @@ Adding those together and making sure we use the same units for both, drumroll p
   <figure class="energy-usage card">
     <b>{% include energy-units.html
       joules='1.522 MJ'
-      watt-hours='422.78 Wh'
-      gasoline='9.63 tsp'
+      watt-hours='422.89 Wh'
+      gasoline='9.64 tsp'
     %}</b>
     <figcaption role="aside" class="specifier">per Fortnite session</figcaption>
   </figure>
@@ -575,17 +581,17 @@ Mean:
   (103.82+255.8)/2 = 179.81
 -->
 
-Meaning that **Fortnite uses between 104 ~ 256 times more energy than image generators**, with the mean being somewhere around 180, so we can finally say:
+Meaning that **Fortnite uses between 17 ~ 250 times more energy than image generators**, with the mean being somewhere around 130, so we can finally say:
 
 
 <figure class="big energy-usage card">
     <span class="specifier">Fortnite takes</span>
-    <b>180×</b>
+    <b>130×</b>
     <figcaption class="specifier">more energy than image generators</figcaption>
     <aside><strong>1</strong> Fortnite session vs generating <strong>8</strong> images</aside>
 </figure>
 
-That means the energy it takes to play 1 Fortnite session could generate **~1,440 images!**
+That means the energy it takes to play 1 Fortnite session could generate **~1,040 images!**
 
 
 
@@ -1019,7 +1025,7 @@ I spent about **72 hours** total writing this article. Well, probably more since
 
 I also used various search engines to find the **47+ Internet sources** linked in this article. I feel like I had to do **~3 searches per source** on average so we'll say I performed the equivalent of **140 Google searches**.
 
-I'm gonna ignore how much energy each of those sites takes, all the editing software, the server software, the browser I use and its dev tools, the many Telegram discussions with friends...
+I'm gonna ignore how much energy each of those sites takes, all the editing software, the server software, the browser I use and its dev tools, performing the calculations, the many Telegram discussions with friends...
 I'll just look at the high-level view of how much energy the research for this blogpost took:
 
 <figure class="energy-usage card">
