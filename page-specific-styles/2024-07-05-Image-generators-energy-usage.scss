@@ -21,19 +21,19 @@
     margin-inline: auto;
     box-sizing: content-box;
     width: fit-content;
-
-
+    
+    
     &>* {
         display: block;
     }
-
-
+    
+    
     .specifier {
         font-size: 1rem;
         opacity: 75%;
     }
-
-
+    
+    
     &.big {
         font-size: 48pt;
 
@@ -66,7 +66,6 @@
     margin-inline: auto;
     border-radius: 0 0 1em 1em;
 }
-
 
 .content-switcher [selected] {
     color: var(--dark-theme-foreground-color);

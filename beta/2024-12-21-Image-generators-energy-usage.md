@@ -4,7 +4,7 @@ title: On the energy usage of image generators
 social-preview-image: /images/AI vs Fortnite.png
 excerpt: Is AI is killing the environment because it takes so much energy to generate its output?
 
-date: 2024-12-19 MT
+date: 2024-12-21 20:45 MT
 
 authors:
     - The Arx
