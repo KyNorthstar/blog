@@ -1,4 +1,5 @@
 ---
+layout: post
 title: On the energy usage of image generators
 social-preview-image: /images/AI vs Fortnite.png
 excerpt: Is AI is killing the environment because it takes so much energy to generate its output?
@@ -650,7 +651,7 @@ However, it's [well-known](https://community.adobe.com/t5/photoshop-ecosystem-di
     {%- endcapture %}
     {{- energyUsage-photoshop-perHour -}}
   </b>
-  <figcaption role="aside" class="specifier">To use Photoshop for 1 hour. <br/>Probably.</figcaption>
+  <figcaption role="aside" class="specifier">To use Photoshop for 1 hour. <br/>Probably. Maybe.</figcaption>
 </figure>
 
 
@@ -691,6 +692,7 @@ Meaning that **commissioning art uses between 15.4 ~ 224.3 times more energy tha
     <aside>Commissioning <strong>1</strong> artwork vs generating <strong>8</strong> images</aside>
 </figure>
 
+That's about the energy it takes to **generate ~960 images!**
 
 
 
@@ -718,9 +720,9 @@ Well, if you don't like that it takes {{ energyUsage-generate8Images-plusOverhea
 [According to Google][Google: Powering a Google Search], a Google search in 2009 took about **{{ energyUsage-googleSearch-2009 }}** of energy.
 [A 2019 article by Full Fact][Full Fact: How energy intensive is a Google search?] discusses a claim by The Times that a single Google search takes enough energy to "power a low-energy light bulb for an hour", which the article then goes on to interpret as about **{{ energyUsage-googleSearch-2019 }}**.
 
-Assuming that all the fancy info cards and such increased the energy usage since 2009, I'll go with the newer figure. I'll also ignore the [AI Overview bullshit][Google is Smart] for now.
+Assuming that all the fancy info cards and such increased each Google search's energy usage since 2009, I'll go with the newer & higher figure. I'll also ignore the [AI Overview bullshit][Google is Smart] because it's not really useful and complicates these calculations.
 
-So assuming you go directly to images.google.com and search from there and that uses **{{ energyUsage-googleSearch-2019 }}**, and it takes you 1 minute to find the image you want and you don't have to do a second search, and you're using that iMac from earlier which uses **{{ energyUsage-averageDevice-perMinute }}** per minute, and you're _really_ hammering in that search query which uses **{{- energyUsage-humanBody-1KCal -}}**, and you're using Magical Internet that takes zero energy to transmit data:
+So assuming you have a browser sortcut to directly search images.google.com and that uses **{{ energyUsage-googleSearch-2019 }}**, and it takes you 1 minute to find the image you want (and you don't have to do a second search), and you're using that iMac from earlier which uses **{{ energyUsage-averageDevice-perMinute }}** per minute, and you spend 1KCal (**{{- energyUsage-humanBody-1KCal -}}**) to type in the search query, and you're using Magical Internet that takes zero energy to transmit data:
 
 <figure class="energy-usage card">
   <!--
@@ -743,7 +745,7 @@ So assuming you go directly to images.google.com and search from there and that 
   <figcaption role="aside" class="specifier">to find 1 image on Google</figcaption>
 </figure>
 
-Which, when compared to generating **8** images taking {{ energyUsage-generate8Images-plusOverhead }}, means that Googling an image takes between 0.46 ~ 6.6 times as much energy as generating 8 images. Taking the mean of those, we get:
+Which, when compared to generating **8** images taking {{ energyUsage-generate8Images-plusOverhead }}, means that Googling an image takes between 0.46 ~ 6.7 times as much energy as generating 8 images. Taking the mean of those, we get:
 
 <figure class="big energy-usage card">
     <span class="specifier">Googling takes about</span>
@@ -752,11 +754,11 @@ Which, when compared to generating **8** images taking {{ energyUsage-generate8I
     <aside>Googling <strong>1</strong> image vs generating <strong>8</strong> images</aside>
 </figure>
 
-That means the energy it takes to google 1 image could generate **~22 images!**
+That means the energy it takes to google 1 image could **generate ~28 images!**
 
 Nowhere near the difference we saw with comparing to Fortnite or artists, but we all expected that a single Google search takes less energy than those.
 
-Still, it's important to note that this is the first comparison we've done where the most-energy-intensive estimate for generating 8 images is higher than this, though the low-estimate is still notably lower.
+Still, it's important to note that this is the first comparison we've done where the most-energy-intensive estimate for generating 8 images is higher than an alternative (Generating 8 images can be about ~2.2× more energy usage than the most-efficient Google search), though the low-estimate is still notably lower (A Google search can be about ~6.7× more energy than generating 8 images).
 
 
 
@@ -905,14 +907,19 @@ So in total, you get between:
     <figcaption role="aside" class="specifier">to make a good image generator</figcaption>
 </figure>
 
-{% include energy-units.html
-  joules='Gigajoules'
-  watt-hours='Megawatt-hours'
-  gasoline='Kilo-gallons'
-%}! Now that's a whole SI prefix more than before! And that's not even counting the human cost, which... I'll just say is difficult enough to calculate that even I won't be estimating it today.
+{%- capture energyUnit-gigajoules %}
+  {%- include energy-units.html
+    joules='Gigajoules'
+    watt-hours='Megawatt-hours'
+    gasoline='Kilo-gallons'
+  %}
+{%- endcapture %}
+
+{{ energyUnit-gigajoules }}! Now that's a whole SI prefix more than before! And that's not even counting the human cost, which... I'll just say is difficult enough to calculate that even I won't be estimating it today.
 
 
-
+To properly compare this, though, we would have to look at how much energy it takes to create a game like Fortnite, a program like Photoshop, or a service like Google Search. Which... I don't currently have the energy/time to figure out (How much energy to power a floor of an office building? How many employees' workstations? How long do they work? Do you count all versions together or just the current one? If just the current one, how do you account for all the work that went into making the code it updates? etc.).
+If you've read the rest of this article, then you should already guess that will also be on the order of {{ energyUnit-gigajoules }}, most likely more than making an image generator.
 <!-- TODO: How much energy did it take to develop Fortnite? -->
 
 
@@ -929,19 +936,6 @@ To wrap up this article, let's take a look at some more things that are measured
 
 
 <div class="flex-row flex-wrap">
-  <figure class="energy-usage card">
-    <!--
-      Average commute distances for 10 USA cities: (11.51+10.78+10.28+9.44+9.32+9.01+9.01+7.79+7.56+5.47)/10 = 9.017mi/d * 2 = 18.034mi/d
-      57.5~75.0 kWh battery, 272~333-mile range = TODO
-      -->
-      <b>{% include energy-units.html
-        joules='TODO GJ'
-        watt-hours='TODO MWh'
-        gasoline='TODO gallons'
-      %}</b>
-      <figcaption role="aside" class="specifier">avg. Tesla Model 3 yearly commute</figcaption>
-  </figure>
-
   <!--figure class="energy-usage card">
       <!-
       commute: 18.034mi/d
@@ -1010,6 +1004,28 @@ To wrap up this article, let's take a look at some more things that are measured
     %}</b>
       <figcaption role="aside" class="specifier">Driving a Hummer HEV for 1 year</figcaption>
   </figure>
+  
+  <figure class="energy-usage card">
+    <!--
+      Average commute distances for 10 USA cities: (11.51+10.78+10.28+9.44+9.32+9.01+9.01+7.79+7.56+5.47)/10 = 9.017mi/d * 2 = 18.034mi/d
+      ---
+      57.5~75.0 kWh battery
+      272~333-mile range
+      TODO mi/kWh
+      0.17267267 ~ 0.21139706 ~ 0.22522523 ~ 0.27573529 kWh/mi
+      ---
+      ⬆ kWh/mi * 11,000 mi =
+      1899.39937 ~ 2325.36766 ~ 2477.47753 ~ 3033.08819 kWh
+      Mean: 2433.8331875
+      Median: 2401.422595
+      -->
+    <b>{% include energy-units.html
+      joules='8.65 GJ'
+      watt-hours='2.40 MWh'
+      gasoline='71.26 gallons'
+    %}</b>
+    <figcaption role="aside" class="specifier">avg. Tesla Model 3 yearly **commute**</figcaption>
+  </figure>
 </div>
 
 
@@ -1019,13 +1035,16 @@ Sources: [Tesla Model 3 stats], [LandLine: Traffic Signals], [Moovit Public Tran
 
 
 
+
+
+
 # The Meta
 
 I spent about **72 hours** total writing this article. Well, probably more since I started 2024-07-05, but I don't want to think about that lol...
 
-I also used various search engines to find the **47+ Internet sources** linked in this article. I feel like I had to do **~3 searches per source** on average so we'll say I performed the equivalent of **140 Google searches**.
+I also used various search engines to find the **47+ Internet sources** linked in this article. I feel like my median search probably required **~3 searches per source** so we'll say I performed the equivalent of **140 Google searches**.
 
-I'm gonna ignore how much energy each of those sites takes, all the editing software, the server software, the browser I use and its dev tools, performing the calculations, the many Telegram discussions with friends...
+I'm gonna ignore how much energy each of those sites takes, all the editing software, the server software, the browser I use and its dev tools, performing the calculations, the many Telegram discussions with friends, quadruple-checking the math...
 I'll just look at the high-level view of how much energy the research for this blogpost took:
 
 <figure class="energy-usage card">
