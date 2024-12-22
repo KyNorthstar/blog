@@ -1,0 +1,5 @@
+<span class="energy-units switched-content   flex-column flex-horiz-center">
+  {%- for unit in include -%}
+  <span data-energy-unit="{{ unit[0] }}">{{ unit[1] }}</span>
+  {%- endfor -%}
+</span>

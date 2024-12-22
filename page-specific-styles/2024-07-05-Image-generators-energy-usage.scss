@@ -1,0 +1,86 @@
+---
+---
+
+:root {
+    --energy-usage-emphasis-big: var(--material-deep-orange-a400);
+}
+
+.brightness-light {
+
+}
+
+.brightness-dark {
+    --energy-usage-emphasis-big: var(--material-deep-orange-a100);
+}
+
+
+
+.energy-usage {
+    text-align: center;
+    font-size: 24pt;
+    margin-inline: auto;
+    box-sizing: content-box;
+    width: fit-content;
+    
+    
+    &>* {
+        display: block;
+    }
+    
+    
+    .specifier {
+        font-size: 1rem;
+        opacity: 75%;
+    }
+    
+    
+    &.big {
+        font-size: 48pt;
+
+        color: var(--energy-usage-emphasis-big);
+    }
+    
+    
+    &.card aside {
+        opacity: 75%;
+        // xborder: none;
+        // xpadding: 0;
+        margin-inline: 0;
+        background-color: var(--theme-background-color-at-level-3);
+        
+        &:last-child {
+            margin-block-end: 0;
+        }
+    }
+}
+
+
+
+[data-switched-element-selector="[data-energy-unit]"] {
+    position: sticky;
+    top: var(--app-bar-height-auto);
+    inset-block-start: var(--app-bar-height-auto);
+    background: var(--theme-background-color);
+    z-index: 100;
+    width: fit-content;
+    margin-inline: auto;
+    border-radius: 0 0 1em 1em;
+}
+
+.content-switcher [selected] {
+    color: var(--dark-theme-foreground-color);
+    background: var(--dark-theme-background-color);
+    
+    &[data-energy-unit-option="joules"] {
+        background: linear-gradient(to bottom, var(--material-indigo-a200), var(--material-indigo-700));
+    }
+    
+    &[data-energy-unit-option="watt-hours"] {
+        background: linear-gradient(to bottom, var(--material-amber-a400), var(--material-amber-900));
+        color: var(--light-theme-foreground-color);
+    }
+    
+    &[data-energy-unit-option="gasoline"] {
+        background: linear-gradient(to bottom, var(--material-red-a200), var(--material-red-a700));
+    }
+}

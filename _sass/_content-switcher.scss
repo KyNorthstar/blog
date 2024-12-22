@@ -1,0 +1,18 @@
+
+*,
+ol,
+ul {
+    &.switched-content {
+        display: inline-flex;
+        
+        &,
+        &>* {
+            margin: 0;
+            padding: 0;
+        }
+        
+        &>* {
+            list-style: none;
+        }
+    }
+}
