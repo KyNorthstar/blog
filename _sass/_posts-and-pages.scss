@@ -31,13 +31,16 @@
         margin-top: calc(-3 * var(--app-bar-height-auto));
     }
     
+    p, li {
+        color: var(--theme-foreground-color);
+        color: color-mix(in srgb, var(--theme-foreground-color) 80%, transparent);
+    }
+    
     p {
         line-height: 1.333;
         text-indent: 1em;
         
         font-weight: 400;
-        color: var(--theme-foreground-color);
-        color: color-mix(in srgb, var(--theme-foreground-color) 80%, transparent);
         
         * {
             text-indent: 0;
@@ -128,10 +131,12 @@
         }
     }
     
-    header h1,
-    h1:first-of-type {
-        margin-block-start: unset;
+    header:first-of-type h1:first-of-type {
         text-align: center;
+        
+        .hero-image + #main & {
+            margin-block-start: unset;
+        }
         
         &::before {
             content: unset;
@@ -277,14 +282,25 @@
         &.mid-post-hero,
         &.end-post-hero {
             display: block;
-            max-width: 80%;
+            width: 80%;
+            width: max-content;
+            //min-width: 75%;
+            max-width: 100%;
             margin-inline: auto;
             margin-block: 3em;
-            max-height: calc(90vh - var(--app-bar-height-auto, 1cm));
+            max-height: calc(90vh - var(--app-bar-height-auto, 1in));
             
+            
+            // For SVGs and the like which are really tiny by default
+            &.no-intrinsic-size {
+                width: 80%
+            }
             
             @media (max-width: 5in) {
+                // min-width: unset;
+                // max-width: unset;
                 width: 100%;
+                max-height: none;
             }
         }
         
@@ -464,8 +480,9 @@
             }
         }
         
-        >.chips:first-child {
+        >:first-child {
             margin-block-start: 1ex;
+            padding-block-start: 1ex;
         }
         
         .dates-and-times {
@@ -484,6 +501,44 @@
         
         .oss-links {
             text-align: end;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-block-start: 0.5ex;
+            padding-block-start: 0;
+            font-size: 1em;
+            text-align: start;
+        }
+        
+        h1 {
+            font-size: 1.5em;
+            
+            &::before,
+            &::after {
+                content: none;
+            }
+        }
+        
+        #Sources {
+            border-block-start: 1px dashed var(--card-border-color);
+        }
+        
+        ol, ul {
+            &:not(.chips):not(.plain) {
+                li {
+                    margin-left: 3ex;
+                    
+                    &::marker {
+                        color: color-mix(in srgb, var(--theme-foreground-color) 50%, transparent);
+                    }
+                }
+            }
+        }
+        
+        
+        >:last-child {
+            margin-block-end: 0;
+            padding-block-end: 0;
         }
     }
     

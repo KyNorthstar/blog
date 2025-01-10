@@ -36,7 +36,7 @@ layout: default
             {% endfor %}
         </ol>
 
-        <ol class="dates-and-times">
+        <ol class="dates-and-times   plain">
             <li>
                 <time class="date" datetime="{{ page.date | date_to_xmlschema }}">
                     <span>{% if page.date-migrated or page.date-edit %}Originally posted{% else %}Posted{% endif %}</span> {{ page.date | date: "%F <span>(a %A)</span> at <span>%R %Z</span>" }}
@@ -57,19 +57,7 @@ layout: default
             </li>
             {%- endif %}
         </ol>
-
-        {% if page.sources.size > 0 %}
-        <section id="Sources">
-            <h4>Sources</h4>
-
-            <ul>
-                {%- for source in page.sources %}
-                <li><a href="{{ source.url }}" target="_blank">{{ source.name }}</a></li>
-                {%- endfor %}
-            </ul>
-        </section>
-        {%- endif %}
-
+        
         <footer class="oss-links">
             {%- if page.original-url %}
             <a href="{{ page.original-url }}" title="View Original" target="_blank" class="low-emphasis button"><i class="material-icons">import_contacts</i> <span>View Original</span></a>
@@ -77,6 +65,18 @@ layout: default
             <a href="https://github.com/KyLeggiero/blog/commits/{{ site.git.default-branch }}/{{ page.path }}" title="Post History" target="_blank" class="low-emphasis button"><i class="material-icons">history</i> <span>History</span></a>
             <a href="https://github.com/KyLeggiero/blog/edit/{{ site.git.default-branch }}/{{ page.path }}" title="Suggest an Edit" target="_blank" class="low-emphasis button"><i class="material-icons">edit</i> <span>Suggest an Edit</span></a>
         </footer>
+        
+        {% if page.sources.size > 0 %}
+        <section id="Sources">
+            <h1>Sources</h1>
+
+            <ol class="source-list">
+                {%- for source in page.sources %}
+                <li id="Source-{{ forloop.index }}"><a href="{{ source.url }}" target="_blank">{{ source.name }}</a></li>
+                {%- endfor %}
+            </ol>
+        </section>
+        {%- endif %}
     </footer>
 </article>
 

@@ -26,3 +26,13 @@
 .chips .chip {
     border-width: 0;
 }
+
+
+.sidebar ul .button.image-button  {
+    .material-icons,
+    .fab {
+        font-size: 2rem;
+        width: 1em;
+        margin-inline-end: 0.4em;
+    }
+}

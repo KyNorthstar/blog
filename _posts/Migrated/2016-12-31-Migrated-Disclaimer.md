@@ -7,4 +7,4 @@ categories:
   - Separator
 ---
 
-All the posts below this one were written before I made this blog, migrated here from what might be called an older blog of mine, _Ben has opinions_.
+All the posts below this one were written before I made this blog, migrated here from what might be called an older blog of mine.

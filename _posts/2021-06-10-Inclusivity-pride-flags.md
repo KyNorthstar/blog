@@ -134,7 +134,7 @@ After I identified these related but distinct needs, inspiration struck me and I
 # My Proposal #
 
 <figure markdown=1>
-[![A flag displaying 10 chevrons pointing rightward: the original 8 colors, then silver and grey](/images/Pride Flags/GSM Pride Flag (2021 Ky Leggiero design).svg){:.mid-post-hero.card}]({{ page.download-link }})
+[![A flag displaying 10 chevrons pointing rightward: the original 8 colors, then silver and grey](/images/Pride Flags/GSM Pride Flag (2021 Ky Leggiero design).svg){:.mid-post-hero.card.no-intrinsic-size}]({{ page.download-link }})
 <figcaption role="cite">
     <span style="margin:1em">The GSRM Pride Flag (2021 Ky Leggiero design)</span>
 

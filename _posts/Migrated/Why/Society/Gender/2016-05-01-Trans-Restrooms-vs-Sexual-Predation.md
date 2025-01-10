@@ -1,20 +1,20 @@
 ---
 layout: post
-title: Ben's opinions on Transgender-Friendly Bathrooms vs Sexual Predation.
+title: Ky's opinions on Transgender-Friendly Bathrooms vs Sexual Predation.
 date: 2016-05-01 16:54 -0400
 date-migrated: 2018-08-21 23:44 -0400
 original-url: https://ben.bhstudios.org/why?Society/Gender/Trans-Restrooms-vs-Sexual-Predation
 categories:
   - Migrated
-  - Ben.BHStudios.org/why
   - Society
   - Gender
   - Essay
+excerpt: There's no danger in making bathrooms trans-friendly.
 ---
 
 <blockquote>This essay is a response to the following article: <a href="http://thefederalist.com/2015/11/23/a-rape-survivor-speaks-out-about-transgender-bathrooms/"><i>A Rape Survivor Speaks Out About Transgender Bathrooms</i></a> and <a href="https://plus.google.com/106132190902853507998/posts/4De5apaq3ZC">a post on Google+</a>. For the purposes of this essay, I will use "bathrooms" as an encompassing term for "restrooms, bathrooms, locker rooms, dressing rooms, and other areas designated one-sex-only".</blockquote>
 
-<blockquote class="hero"><strong>tl;dr</strong> There's no danger in making bathrooms trans-friendly. Sexual predators and other violent people have, do, and will always find ways to do horrible things, regardless of any policy, no matter how strict. All these proposed policies would do is allow men in men's bodies to pee in men's bathrooms, and women in women's bodies to pee into women's bathrooms, regardless of their sex at birth. It has been, is still, and always will be just as illegal (and absolutely <em>horrid</em>) to be a sexual predator.</blockquote>
+<blockquote class="hero"><p><strong>tl;dr</strong> There's no danger in making bathrooms trans-friendly. Sexual predators and other violent people have, do, and will always find ways to do horrible things, regardless of any policy, no matter how strict. All these proposed policies would do is allow men in men's bodies to pee in men's bathrooms, and women in women's bodies to pee into women's bathrooms, regardless of their sex at birth. It has been, is still, and always will be just as illegal (and absolutely <em>horrid</em>) to be a sexual predator.</p></blockquote>
 
 <article id="Essay">
 
