@@ -4,7 +4,7 @@ title: On the energy usage of image generators
 social-preview-image: /images/AI energy usage • Social Preview.jpg
 excerpt: Is AI is killing the environment because it takes so much energy to generate its output?
 
-date: 2025-01-10 MT
+date: 2025-01-11 18:00 MT
 
 authors:
     - The Arx
@@ -25,7 +25,7 @@ page-specific-stylesheets:
 #     right-widget: energy-unit-switcher.html
 
 redirect_from:
-    - /AI-energy-usagez
+    - /AI-energy-usage
 
 
 
@@ -477,7 +477,7 @@ Now. It takes less energy for a human to type a prompt into the text field of an
 
 I found [a website][Calories Burned Playing Video Games] which attempts to give estimates for Kilocalories burned by playing video games, above the base KCals that humans burn just existing. The thing is, this website focuses on "traditional video game" versus video games designed to promote fitness, like Wii Fit and DDR.
 
-Well that isn't exactly what we're looknng for...
+Well that isn't exactly what we're looking for...
 
 Alright, let's make an educated guess and assume a 1-hour Fortnite session is comparable to a light-to-moderate 15-minute Wii Fit session. Using a body mass of 150lbs (68 Kg), splitting the difference between a light Wii Fit session (165 KCal) and a moderate one (272 KCal), that's something like **219 KCal** above human base. That works out to:
 
@@ -582,7 +582,7 @@ I had to crunch a few sources for this one:
 - ESTNN's [Fortnite Servers – All 8 Locations and Why Ping is Important]
 - and a few others that aren't as critical
 
-So the basic thing you need to know is that video game servers are usually pretty generic these days. A video game company like Epic pays a server hosing company like AWS to host it for them... So we'll be looking at some generic numbers here.
+So the basic thing you need to know is that video game servers are usually pretty generic these days. A video game company like Epic pays a server hosting company like AWS to host it for them... So we'll be looking at some generic numbers here.
 
 {%- capture energyUsage-fortnite-serverTotal-perSession %}
 {%- include energy-units.html
@@ -746,7 +746,7 @@ Well we already know how much energy their device would be using. We're still as
 2. How much energy do drawing programs use?
 3. How long does it take to draw an art commission, on average?
 
-For this one, I'll just say that #3 is "1 hour", because that seems very charitable and reasonable for these estiamtes. If the average is longer than that, then so be it, but I can't imagine it's shorter.
+For this one, I'll just say that #3 is "1 hour", because that seems very charitable and reasonable for these estimates. If the average is longer than that, then so be it, but I can't imagine it's shorter.
 
 
 
@@ -860,7 +860,7 @@ Well, if you don't like that it takes {{ energyUsage-generate8Images-plusOverhea
 
 Assuming that all the fancy info cards and such increased each Google search's energy usage since 2009, I'll go with the newer & higher figure. I'll also ignore the [AI Overview bullshit][Google is Smart] because it's not really useful and complicates these calculations.
 
-So assuming you have a browser sortcut to directly search images.google.com and that uses **{{ energyUsage-googleSearch-2019 }}**, and it takes you 1 minute to find the image you want (and you don't have to do a second search), and you're using that iMac from earlier which uses **{{ energyUsage-averageDevice-perMinute }}** per minute, and you spend 1KCal (**{{- energyUsage-humanBody-1KCal -}}**) to type in the search query, and you're using Magical Internet that takes zero energy to transmit data:
+So assuming you have a browser shortcut to directly search images.google.com and that uses **{{ energyUsage-googleSearch-2019 }}**, and it takes you 1 minute to find the image you want (and you don't have to do a second search), and you're using that iMac from earlier which uses **{{ energyUsage-averageDevice-perMinute }}** per minute, and you spend 1KCal (**{{- energyUsage-humanBody-1KCal -}}**) to type in the search query, and you're using Magical Internet that takes zero energy to transmit data:
 
 <figure class="energy-usage card">
   <!--
