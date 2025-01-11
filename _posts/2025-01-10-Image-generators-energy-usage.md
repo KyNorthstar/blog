@@ -479,7 +479,7 @@ I found [a website][Calories Burned Playing Video Games] which attempts to give 
 
 Well that isn't exactly what we're looknng for...
 
-Alright, let's make an educated guess and assume a 1-hour Fortnite session is comparable to a light-to-moderate 15-minute Wii Fit session (TODO: Why?). (TODO: What two numbers are we splitting differentially?) Splitting the difference, using a body mass of TODO, that's something like **219 KCal** above human base. That works out to:
+Alright, let's make an educated guess and assume a 1-hour Fortnite session is comparable to a light-to-moderate 15-minute Wii Fit session. Using a body mass of 150lbs (68 Kg), splitting the difference between a light Wii Fit session (165 KCal) and a moderate one (272 KCal), that's something like **219 KCal** above human base. That works out to:
 
 <figure class="energy-usage card">
   <b>
