@@ -4,7 +4,7 @@ title: On the energy usage of image generators
 social-preview-image: /images/AI energy usage • Social Preview.jpg
 excerpt: Is AI is killing the environment because it takes so much energy to generate its output?
 
-date: 2025-01-11 18:00 MT
+date: 2015-01-11 18:00 MT
 
 authors:
     - The Arx
