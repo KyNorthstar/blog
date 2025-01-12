@@ -2,11 +2,11 @@
 <section>
 <h1 id="#Feedback">Feedback</h1>
 {%- if include.locations.github-issue %}
-    {%- capture regex -%}
-        {{- site.git.remote }}\/?issues\/
+    {%- capture remoteServerUrlExceptIssueNumber -%}
+        {{- site.git.remote }}/issues/
     {%- endcapture %}
     {%- capture issueNumber -%}
-        {{- include.locations.github-issue | regex_replace: regex, '' }}
+        {{- include.locations.github-issue | replace: remoteServerUrlExceptIssueNumber, '' }}
     {%- endcapture %}
     {%- if issueNumber == {{ issueNumber | plus: 1000 }} %}
         {%- assign issueNumber=nil %}
