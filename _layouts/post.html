@@ -11,7 +11,7 @@ layout: default
     {{ content }}
 
     {%- if page.further-reading.size > 0 %}
-    <h2>Further Reading</h2>
+    <h1>Further Reading</h1>
 
     <ul>
         {%- for article in page.further-reading %}
@@ -23,6 +23,12 @@ layout: default
         {%- endfor %}
     </ul>
     {%- endif %}
+    
+    {%- if page.feedback -%}
+    {% include feedback-section.html
+        locations=page.feedback
+    %}
+    {%- endif -%}
 
     {%- if page.discussion %}
     {% include discussion-section.html %}

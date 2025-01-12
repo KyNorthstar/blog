@@ -28,6 +28,8 @@ redirect_from:
     - /AI-energy-usage
 
 
+feedback:
+    github-issue: https://github.com/KyNorthstar/blog/issues/68
 
 sources:
     -
