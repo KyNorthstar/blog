@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div class="posts   link-style-underline-on-hover   flex-row flex-wrap flex-horiz-stretch flex-horiz-center">
+<div class="posts   link-style-underline-on-hover   flex-row flex-wrap flex-horiz-stretch flex-horiz-center flex-vert-top">
     {% for post in site.posts %}
     {% if post.categories contains 'Separator' %}
     <article class="post separator">
@@ -17,18 +17,18 @@ layout: default
             <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
             {% if post.categories contains 'Micro' %}
-            <div class="entry">
+            <div class="entry" markdown="1">
                 {{ post.content }}
             </div>
             {% else %}
-            <div class="entry">
+            <div class="entry" markdown="1">
                 {{ post.excerpt }}
             </div>
             {% endif %}
 
             {% if post.social-preview-image %}
             <a href="{{ site.baseurl }}{{ post.url }}">
-                <img src="{{ post.social-preview-image }}" class="preview" />
+                <img src="{{ post.social-preview-image }}" class="preview" loading="lazy" decoding="async" />
             </a>
             {% endif %}
         </section>

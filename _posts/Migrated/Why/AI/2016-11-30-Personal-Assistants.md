@@ -1,18 +1,18 @@
 ---
 layout: post
-title: Ben's opinions on Personal-Assistants.
+title: Ky's opinions on Personal-Assistants.
 date: 2016-11-30 09:34 -0500
 date-migrated: 2018-08-29 22:28 -0400
-original-url: https://ben.bhstudios.org/why/?AI/Personal-Assistants
+original-url: https://ben.bhstudios.org/why?AI/Personal-Assistants
 categories:
   - Migrated
-  - Ben.BHStudios.org/why
   - AI
   - Essay
+excerpt: They're not personal assistants.
 ---
 
 
-<blockquote class="hero"><strong>tl;dr</strong> They're not personal assistants.</blockquote>
+<blockquote class="hero"><p><strong>tl;dr</strong> They're not personal assistants.</p></blockquote>
 
 
 <section id="">

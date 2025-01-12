@@ -30,6 +30,8 @@
         padding-block-start: 0;
         margin-block-start: 0;
         margin-block-end: 1ex;
+        text-align: left;
+        text-align: start;
     }
 
     ul, ol {
@@ -73,6 +75,9 @@
         margin: 1ex 0 0;
         
         --button-flat-margin: 0;
-
+    }
+    
+    blockquote {
+        margin: 0;
     }
 }

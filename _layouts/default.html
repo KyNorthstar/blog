@@ -39,11 +39,18 @@
     <link rel="stylesheet" type="text/css" href="/page-specific-styles/{{ stylesheet }}" />
         {%- endfor %}
     {%- endif %}
+    
+    {% if site.social.github        %}    <link rel="me" href="https://github.com/{{ site.social.github }}" />                                      {%- endif %}
+    {% if site.social.dribbble      %}    <link rel="me" href="https://dribbble.com/{{ site.social.dribbble }}" />                                  {%- endif %}
+    {% if site.social.email         %}    <link rel="me" href="{{ site.social.email }}" />                                                          {%- endif %}
+    {% if site.social.flickr        %}    <link rel="me" href="https://www.flickr.com/{{ site.social.flickr }}" />                                  {%- endif %}
+    {% if site.social.linkedin      %}    <link rel="me" href="https://www.linkedin.com/in/{{ site.social.linkedin }}" />                           {%- endif %}
+    {% if site.social.mastodon      %}    <link rel="me" href="https://{{ site.social.mastodon.instance }}/@{{ site.social.mastodon.username }}" /> {%- endif %}
+    {% if site.social.pinterest     %}    <link rel="me" href="https://www.pinterest.com/{{ site.social.pinterest }}" />                            {%- endif %}
+    {% if site.social.rss           %}    <link rel="me" href="{{ site.baseurl }}/feed.xml" />                                                      {%- endif %}
+    {% if site.social.stackoverflow %}    <link rel="me" href="http://stackoverflow.com/{{ site.social.stackoverflow }}" />                         {%- endif %}
+    {% if site.social.youtube       %}    <link rel="me" href="https://youtube.com/{{ site.social.youtube }}" />                                    {%- endif %}
 
-    <link href="https://google.com/+KyLeggiero" rel="me" />
-    <link href="https://twitter.com/KyLeggiero" rel="me" />
-    <link href="https://micro.blog/KyLeggiero" rel="me" />
-    <link href="https://mastodon.social/@KyLeggiero" rel="me" />
 
     <script src="https://code.jquery.com/jquery-3.x-git.slim.min.js">/* jQuery */</script>
     <script src="https://scripts.bhstudios.org/assets/v2/general/js/lib/kotlin.js">/* Kotlin/JS for BHStudios General Script */</script>
@@ -84,7 +91,7 @@
     </header>
 
     {%- if page.hero-image %}
-    <img src="{{ page.hero-image }}" class="hero-image" />
+    <img src="{{ page.hero-image }}" class="hero-image" loading="lazy" decoding="async" />
     {%- endif %}
 
     <main id="main" class="rises-up-on-load falls-away-on-nav-away">
@@ -97,7 +104,7 @@
         <section>
             <header>
                 <figure>
-                    <a {% unless page.url == "/" -%} href="/" {%- endunless %}><img src="{{ site.author.avatar }}" class="avatar"/></a>
+                    <a {% unless page.url == "/" -%} href="/" {%- endunless %}><img src="{{ site.author.avatar }}" class="avatar"  loading="lazy" decoding="async" /></a>
                 </figure>
             </header>
             <ul>
