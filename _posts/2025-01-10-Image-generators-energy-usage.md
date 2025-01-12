@@ -5,6 +5,7 @@ social-preview-image: /images/AI energy usage • Social Preview.jpg
 excerpt: Is AI is killing the environment because it takes so much energy to generate its output?
 
 date: 2025-01-11 18:00 MT
+date-edit: 2025-01-12 09:30 MT
 
 authors:
     - The Arx
@@ -674,17 +675,17 @@ Now to figure out how much energy it takes for _you_ to generate 8 images, we ad
 
 <figure class="energy-usage card">
   <!--
-    energy=8images+typing+device
-    joules=33.88kJ+4.19KJ+160J
-    watt-hours=10.80Wh+1.16Wh+44.67mWh
-    gasoline=0.25tsp+0.03tsp+296μL
+    energy     = 8images + typing  + device
+    joules     = 38.88kJ + 4.19KJ  + 160.83J
+    watt-hours = 10.80Wh + 1.16Wh  + 44.67mWh
+    gasoline   = 0.25tsp + 0.03tsp + 5.02μL
     -->
     <b>
       {%- capture energyUsage-generate8Images-plusOverhead %}
         {%- include energy-units.html
-          joules='38.23 kJ'
-          watt-hours='12.00 Wh'
-          gasoline='0.34 tsp'
+          joules='43.23 kJ'
+          watt-hours='12.01 Wh'
+          gasoline='0.27 tsp'
         %}
       {%- endcapture %}
       {{- energyUsage-generate8Images-plusOverhead -}}
@@ -704,6 +705,12 @@ Adding those together and making sure we use the same units for both, drumroll p
 
 <div class="flex-row flex-wrap">
   <figure class="energy-usage card">
+    <!--
+      energy     = client     + server  + human
+      joules     = 604,800.00 + 7.87    + 917,600.00
+      watt-hours = 168Wh      + 2.18mWh + 254.89Wh
+      gasoline   = 3.83tsp    + 0.25µL  + 5.81tsp
+      -->
     <b>{% include energy-units.html
       joules='1.522 MJ'
       watt-hours='422.89 Wh'
@@ -727,7 +734,7 @@ So we can finally say:
 
 <figure class="big energy-usage card">
     <span class="specifier">Fortnite takes</span>
-    <b>24×</b>
+    <b>35×</b>
     <figcaption class="specifier">more energy than image generators</figcaption>
     <aside><strong>1</strong> Fortnite session vs generating <strong>8</strong> images</aside>
 </figure>
