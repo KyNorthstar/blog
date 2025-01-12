@@ -18,6 +18,7 @@ author:
 
 git:
     default-branch: production
+    remote: https://github.com/KyNorthstar/blog
 
 social:
     default-username: KyNorthstar

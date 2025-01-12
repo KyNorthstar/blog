@@ -1,0 +1,18 @@
+{%- if include.locations %}
+<section>
+<h1 id="#Feedback">Feedback</h1>
+{%- if include.locations.github-issue %}
+    {%- capture regex -%}
+        {{- site.git.remote }}\/?issues\/
+    {%- endcapture %}
+    {%- capture issueNumber -%}
+        {{- include.locations.github-issue | regex_replace: regex, '' }}
+    {%- endcapture %}
+    {%- if issueNumber == {{ issueNumber | plus: 1000 }} %}
+        {%- assign issueNumber=nil %}
+    {%- endif %}
+    <p markdown="1"><i class="fab fa-github"></i> Please leave any public feedback/critique of this post <a href="{{ include.locations.github-issue }}">on {% if issueNumber -%} GitHub issue #{{ issueNumber }} {%- else -%} this GitHub issue {%- endif %}</a></p>
+{%- endif %}
+</section>
+{%- endif %}
+
