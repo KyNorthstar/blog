@@ -5,7 +5,7 @@ social-preview-image: /images/AI energy usage • Social Preview.jpg
 excerpt: Is AI is killing the environment because it takes so much energy to generate its output?
 
 date: 2025-01-11 18:00 MT
-date-edit: 2025-01-12 09:30 MT
+date-edit: 2025-01-12 18:20 MT
 
 authors:
     - The Arx
@@ -1187,6 +1187,23 @@ Sources: [Tesla Model 3 stats], [LandLine: Traffic Signals], [Moovit Public Tran
 
 
 
+
+# Ethics
+
+This is a research piece. The goal is to take a critical look at various aspects of the topic of the energy usage of image generators by comparing them to other things that folks tend to be familiar with.
+
+I respect whatever takeaways you get from reading this article, but I urge you: _never_ use this as a reason to avoid supporting small independent artists.
+
+As much as I believe no one should _need_ money to live, that's the sad reality that our Capitalist oppressors have forced upon us. Many communities, especially ones with a large online andor artistic presence (like furry/anime/sci-fi/etc), rely largely on the exchange of art and money to remain afloat. These communities are beautiful; their presence in this world must be preserved. If their artistic core falls, that would be a devastating loss to modern culture.
+
+So please, whether or not you decide to use image generators, support these beautiful communities by paying artists if you have the means to.
+
+
+
+
+
+
+
 # The Meta
 
 I spent about **76 hours** total writing this article. Well, probably more since I started 2024-07-05, but I don't want to think about that lol...
@@ -1219,13 +1236,9 @@ That's more than generating 1,000 images! 🤯
 
 
 
-
-
-
 ## Calculations
 
 Many of these calculations were performed in [a Google Sheets spreadsheet](https://docs.google.com/spreadsheets/d/1VPgkdUFNOWTBiRVHruVnlvhU4-oLUSI-YSKGrREX_Xk/edit?usp=sharing) along with some help from [Wolfram Alpha](https://www.wolframalpha.com/input?i=%281266.667+kWh+%2F+33.7kWh%29+*+1+gallon+to+tsp) to check the math.
-
 
 
 
