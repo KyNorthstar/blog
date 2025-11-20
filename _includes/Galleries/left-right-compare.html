@@ -1,0 +1,18 @@
+<table {%- if include.table-class %} class="{{ include.table-class }}" {%- endif %}>
+    <thead>
+        <th>{{ include.lhs-title | default: "lhs-title" }}</th>
+        <th>{{ include.rhs-title | default: "rhs-title" }}</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ include.lhs | default: "`lhs`" | markdownify }}</td>
+            <td>{{ include.rhs | default: "`rhs`" | markdownify }}</td>
+        </tr>
+        {%- if include.lhs2 or include.rhs2 %}
+        <tr>
+            {%- if include.lhs2 %}<td>{{ include.lhs2 | default: "`lhs2`" | markdownify }}</td>{%- endif %}
+            {%- if include.rhs2 %}<td>{{ include.rhs2 | default: "`rhs2`" | markdownify }}</td>{%- endif %}
+        </tr>
+        {%- endif %}
+    </tbody>
+</table>

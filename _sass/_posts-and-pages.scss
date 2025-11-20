@@ -31,13 +31,14 @@
         margin-top: calc(-3 * var(--app-bar-height-auto));
     }
     
-    p, li {
+    li,
+    p {
         color: var(--theme-foreground-color);
         color: color-mix(in srgb, var(--theme-foreground-color) 80%, transparent);
+        line-height: 1.333;
     }
     
     p {
-        line-height: 1.333;
         text-indent: 1em;
         
         font-weight: 400;
@@ -73,6 +74,18 @@
         
         &:not(:last-child) {
             margin: 0 0 1em;
+        }
+    }
+    
+    pre {
+        @at-root .wrapping pre,
+        &.wrapping {
+            /* word-wrap: normal; */
+            /* word-break: break-word; */
+            width: 100%;
+            text-wrap: auto;
+            max-width: unset;
+            min-width: unset;
         }
     }
     
@@ -453,7 +466,7 @@
             white-space: nowrap;
         }
         
-        .highlight {
+        .highlighted-row {
             background-color: var(--theme-accent-color);
             
             &,

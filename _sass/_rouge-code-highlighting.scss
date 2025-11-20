@@ -150,6 +150,10 @@
     
     width: fit-content;
     margin: auto;
+    
+    .fullwidth & {
+        width: 100%;
+    }
 
     &.code-highlighting-alt,
     .code-highlighting-alt & {
