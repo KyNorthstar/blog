@@ -165,6 +165,20 @@ sources:
 
 ---
 
+
+
+
+{%- capture supportArtistsCalloutMarkdown -%}
+This is a research article whose sole intent is to discover and compare energy usage figures in a way that's more understandable than speculation or simply sharing the numbers on their own.
+
+As the {% if site.authorIsPlural -%} authors, We implore {%- else -%} author, I implore {%- endif %} you: **never use this a reason to fuck over others, nor to deny yourself the act of creation.** <!--to **never use the information presented here as a reason to avoid any method of creation.**--> The need to create is deeply human, and the act of creation is a core component of sapience. Cherish and protect that.
+
+Please see [the Ethics section](#ethics) for more.
+{%- endcapture -%}
+
+
+
+
 > AI is killing the environment because it takes so much energy to generate its output
 {:.big}
 
@@ -198,11 +212,15 @@ i for one get a lot of joy from asking bing ai to generate ‘lightning mcqueen 
 
 As much as I don't really wanna write about Fortnite, it does happen to be a good example here because it's currently a notably-popular online game at time of writing, and we are trying our best to compare apples to apples here.
 
+{% include critically-important-callout.html
+    markdown-content=supportArtistsCalloutMarkdown
+ %}
+
 So, with that said, let's do some research and crunch these numbers!
 
 
 
-## Your Device's Base Power Usage
+## Your device's base power usage
 
 The one you're using right now! Probably a smartphone or laptop or something like that.
 It's using electricity to do everything it does.
@@ -470,7 +488,7 @@ Much more workable. Let's continue!
 
 
 
-## The Energy Usage of a Human Body
+## The energy usage of a human body
 
 Yes, I actually am going here.
 
@@ -516,7 +534,7 @@ And uh... I'll say that typing a sentence is negligibly above base. Let's toss i
 
 
 
-## The Energy Usage of Online Gaming
+## The energy usage of online gaming
 
 The Tumblr post at the top of this blogpost seems concerned with comparing image generation to online gaming (and specifically mentions Fortnite).
 
@@ -524,7 +542,7 @@ Well there's 2 components to this: the players' devices and the server they're c
 
 
 
-### 1: Your Device Running a Video Game
+### 1: Your device running a video game
 
 There's a wide range of possible games your computer can play; everything from Solitaire and Minecraft to Cyberpunk 2077 and Dying Light 2. So I gotta focus somewhere or this is a nothing-question.
 
@@ -570,7 +588,7 @@ And according to [this webpage][Fortnite weekly usage], the average active Fortn
 But remember, this isn't nearly the whole story for playing such an online game. You have to think about the game servers too!
 
 
-### 2: A Server Running an MMO
+### 2: A server running an MMO
 
 Now that's a term that doesn't get thrown around much anymore, huh? Massively-Multiplayer Online (game). Basically fell out of favor once World of Warcraft wasn't the biggest member of this genre.
 
@@ -634,7 +652,7 @@ But... there's 1 more energy component here we've yet to consider.
 
 
 
-## The Energy Usage of Image Generators
+## The energy usage of image generators
 
 I would love to investigate how much energy something like [DALL-E] uses, but sadly it's all proprietary and operated behind closed doors, so I can't really figure that one out.
 
@@ -695,7 +713,7 @@ Now to figure out how much energy it takes for _you_ to generate 8 images, we ad
 
 
 
-## Putting These Together
+## Putting these together
 
 Seems we have everything we need to make a conclusion!
 
@@ -745,7 +763,12 @@ That means the energy it takes to play 1 Fortnite session could generate **~230 
 
 <!-- markdownlint-disable-next-line MD025 -->
 
-# Just Commission An Artist!
+# Just commission an artist!
+
+
+{% include critically-important-callout.html
+    markdown-content=supportArtistsCalloutMarkdown
+ %}
 
 So maybe that all leaves a sour taste in your mouth. To heck with image generators! You're just gonna have an artist make the image for you.
 
@@ -759,7 +782,7 @@ For this one, I'll just say that #3 is "1 hour", because that seems very charita
 
 
 
-## Back To Measuring A Human Body
+## Back to measuring a human body
 
 How much energy does an artist's body use while drawing? It's surely more than typing a prompt, but less than twitch-response gaming.
 [According to Scientific American][Scientific American: Does Thinking Really Hard Burn More Calories?], although mental effort _does_ increase exhaustion, it _doesn't_ notably affect calories burned. So, we'll only be looking at how much their body is moving.
@@ -782,7 +805,7 @@ Let's assume the artist is doing traditional painting-style art. Brush on canvas
 
 
 
-## Energy Usage of an Art Program
+## Energy usage of an art program
 
 We measured how much energy a latent-diffusion image generator uses, so now let's see how much energy a drawing program uses.
 
@@ -803,7 +826,7 @@ However, it's [well-known](https://community.adobe.com/t5/photoshop-ecosystem-di
 
 
 
-## Putting These Together
+## Putting these together
 
 To make things easier on ourselves, let's say that this artist always takes exactly 1 hour to draw the art, and that your request was just sending them a single sentence over text (**{{ energyUsage-humanBody-1KCal }}**), and assuming the artist is using Photoshop at about the same power usage as Fortnite (**{{ energyUsage-photoshop-perHour }}**), and that they're doing this for free. So we have our numbers!
 
@@ -910,7 +933,7 @@ Nowhere near the difference we saw with comparing to Fortnite or artists, but we
 
 
 
-# But Wait, The Training Tho!
+# But wait, the training tho!
 
 Ahhhh, if you thought this, I commend you. Training an image generator is a significant amount of energy that shouldn't be discounted.
 
@@ -1194,6 +1217,10 @@ This is a research piece. The goal is to take a critical look at various aspects
 
 I respect whatever takeaways you get from reading this article, but I urge you: _never_ use this as a reason to avoid supporting small independent artists.
 
+It's absolute nonsesnse to say whether it's "better" to use an image generator or create an image manually. No one should be thinking about such things.
+
+The need to create is deeply human, a core part of the experience of existing as sapient. Thinking of art primarily as a way to make money, has destroyed what art is actually about. There are so many people who refuse to be creative because they are afraid they won't be good enough to make money off it! Art is self-expression. Art is an externalization of emotions. Art is life.
+
 As much as I believe no one should _need_ money to live, that's the sad reality that our Capitalist oppressors have forced upon us. Many communities, especially ones with a large online andor artistic presence (like furry/anime/sci-fi/etc), rely largely on the exchange of art and money to remain afloat. These communities are beautiful; their presence in this world must be preserved. If their artistic core falls, that would be a devastating loss to modern culture.
 
 So please, whether or not you decide to use image generators, support these beautiful communities by paying artists if you have the means to.
@@ -1204,7 +1231,7 @@ So please, whether or not you decide to use image generators, support these beau
 
 
 
-# The Meta
+# The meta
 
 I spent about **76 hours** total writing this article. Well, probably more since I started 2024-07-05, but I don't want to think about that lol...
 

@@ -244,8 +244,8 @@ fn main() {
     let doubled = double(7);
     println!("doubled: {}", doubled);
     
-    let doubledNegative = double(-11);
-    println!("doubledNegative: {}", doubledNegative);
+    let doubled_negative = double(-11);
+    println!("doubled_negative: {}", doubled_negative);
 }
 ```
 {:.fullwidth}
@@ -294,20 +294,17 @@ You roll your eyes, but you know what to do. Update the function so that a negat
 
 {%- capture rustSubFunction_after %}
 ```rust
-fn double(number: i32) -> i32 {
-    number * 2
+fn double(number: i32) -> Result<i32, DivisionError> {
+    if number < 0 {
+        Err(DivisionError::DivisionByZero)
+    }
+    else {
+        Ok(number * 2)
+    }
 }
-```
-{:.fullwidth}
-{%- endcapture %}
-{%- capture rustSuperFunction_after %}
-```rust
-fn main() {
-    let doubled = double(7);
-    println!("doubled: {}", doubled);
-    
-    let doubledNegative = double(-11);
-    println!("doubledNegative: {}", doubledNegative);
+
+enum DivisionError {
+    DivisionByZero,
 }
 ```
 {:.fullwidth}
@@ -316,7 +313,7 @@ fn main() {
 ```swift
 func double(_ number: Int32) throws -> Int32 {
     guard number >= 0 else { throw DivisionError.divisionByZero }
-    number * 2
+    return number * 2
 }
 
 enum DivisionError: Error {
@@ -325,13 +322,115 @@ enum DivisionError: Error {
 ```
 {:.fullwidth}
 {%- endcapture %}
-{%- capture swiftSuperFunction_after %}
+
+<div class="wide-table-holder">
+{% include Galleries/left-right-compare.html
+    table-class="top-align-td"
+    lhs-title="Rust"
+    rhs-title="Swift"
+    lhs=rustSubFunction_after
+    rhs=swiftSubFunction_after
+    lhs2=rustSuperFunction_before
+    rhs2=swiftSuperFunction_before
+%}
+</div>
+
+What do you think would happen here if you try to compile these?
+
+Well, both of these need updating. When you compile, both fail in interestingly different ways:
+
+```
+% rustc doubler_after.rs
+error[E0277]: `Result<i32, DivisionError>` doesn't implement `std::fmt::Display`
+  --> doubler_after.rs:17:29
+   |
+17 |     println!("doubled: {}", doubled);
+   |                             ^^^^^^^ `Result<i32, DivisionError>` cannot be formatted with the default formatter
+   |
+   = help: the trait `std::fmt::Display` is not implemented for `Result<i32, DivisionError>`
+   = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+   = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0277]: `Result<i32, DivisionError>` doesn't implement `std::fmt::Display`
+  --> doubler_after.rs:20:38
+   |
+20 |     println!("doubled_negative: {}", doubled_negative);
+   |                                      ^^^^^^^^^^^^^^^^ `Result<i32, DivisionError>` cannot be formatted with the default formatter
+   |
+   = help: the trait `std::fmt::Display` is not implemented for `Result<i32, DivisionError>`
+   = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+   = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0277`.
+```
+{:.wrapping}
+```
+% swiftc doubler_after.swift
+doubler_after.swift:11:19: error: call can throw, but it is not marked with 'try' and the error is not handled
+ 9 |
+10 | func main() {
+11 |     let doubled = double(7)
+   |                   `- error: call can throw, but it is not marked with 'try' and the error is not handled
+12 |     print("doubled: \(doubled)")
+13 |     
+
+doubler_after.swift:14:27: error: call can throw, but it is not marked with 'try' and the error is not handled
+12 |     print("doubled: \(doubled)")
+13 |     
+14 |     let doubledNegative = double(-11)
+   |                           `- error: call can throw, but it is not marked with 'try' and the error is not handled
+15 |     print("doubledNegative: \(doubledNegative)");
+16 | }
+```
+{:.wrapping}
+
+Rust tells you that the `Result` can't be printed and you must implement that, and Swift tells you that an error might happen and you must handle that.
+
+Well, since both of these languages assert that the compiler saves you from common mistakes, let's follow the guidance of the compilers.
+
+Rust tells us "<code>in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead</code>",<br/>
+and Swift tells us "`call can throw, but it is not marked with 'try' and the error is not handled`".
+
+So we'll use `{:?}` instead of `{}` in Rust, and we'll mark the throwing function calls with `try` in Swift.
+
+Updating those callsites accordingly, we get this:
+
+
+{%- capture rustSubFunction_after %}
+```rust
+fn double(number: i32) -> Result<i32, DivisionError> {
+    if number < 0 { Err(DivisionError::DivisionByZero) }
+    else { Ok(number * 2) }
+}
+
+#[derive(Debug)]
+enum DivisionError {
+    DivisionByZero,
+}
+```
+{:.fullwidth}
+{%- endcapture %}
+{%- capture rustSuperFunction_afterCompilerAdvice %}
+```rust
+fn main() {
+    let doubled = double(7);
+    println!("doubled: {:?}", doubled);
+    
+    let doubled_negative = double(-11);
+    println!("doubled_negative: {:?}", doubled_negative);
+}
+```
+{:.fullwidth}
+{%- endcapture %}
+{%- capture swiftSuperFunction_afterCompilerAdvice %}
 ```swift
 func main() {
-    let doubled = double(7)
+    let doubled = try double(7)
     print("doubled: \(doubled)")
     
-    let doubledNegative = double(-11)
+    let doubledNegative = try double(-11)
     print("doubledNegative: \(doubledNegative)");
 }
 ```
@@ -345,16 +444,72 @@ func main() {
     rhs-title="Swift"
     lhs=rustSubFunction_after
     rhs=swiftSubFunction_after
-    lhs2=rustSuperFunction_after
-    rhs2=swiftSuperFunction_after
+    lhs2=rustSuperFunction_afterCompilerAdvice
+    rhs2=swiftSuperFunction_afterCompilerAdvice
 %}
 </div>
 
 
+Now, after these changes recommended by these compilers, what do you think would happen here if you try to compile these?
+
+```
+% rustc doubler_afterCompilerAdvice.rs
+
+% swiftc doubler_afterCompilerAdvice.swift
+doubler_afterCompilerAdvice.swift:11:19: error: errors thrown from here are not handled
+ 9 |
+10 | func main() {
+11 |     let doubled = try double(7)
+   |                   `- error: errors thrown from here are not handled
+12 |     print("doubled: \(doubled)")
+13 |     
+
+doubler_afterCompilerAdvice.swift:14:27: error: errors thrown from here are not handled
+12 |     print("doubled: \(doubled)")
+13 |     
+14 |     let doubledNegative = try double(-11)
+   |                           `- error: errors thrown from here are not handled
+15 |     print("doubledNegative: \(doubledNegative)");
+16 | }
+```
+{:.wrapping}
+
+Rust says that everything is good, and Swift says you still haven't handled the thrown errors. Remember: in Swift, marking the callsite of a throwing function with `try` is just the beginning of addressing the potential error. You still need to _explicitly_ say whether Swift should catch it, rethrow it, convert it to an `Optional`, or crash the program.
+
+The Rust compiler tells you to pretty-print the error state, the Swift compiler tells you to address the error.
 
 
 
+# So... how's that all relate to the Cloudflare outage?
 
+Now, obviously, the examples I gave are overly simplified and don't tell the whole story. But I'm not here to tell the whole story; I'm here to discuss the differences in friction and guidance between the Swift and Rust langauges and compilers.
+
+
+
+<!--
+Now, you run that Rust program and clearly you've not yet dealt with the error; you just get this:
+
+```
+% doubler_afterCompilerAdvice
+doubled: Ok(14)
+doubled_negative: Err(DivisionByZero)
+```
+
+So hooray no crash! But we all know this wasn't what was desired. So let's go about actually getting a value out of that.
+
+With no further direction from the Rust compiler, we turn to [the documentation](https://doc.rust-lang.org/std/result/#extracting-contained-values). According to that, Rust offers these ways to get a value from a function which might error:
+
+> - `expect` panics with a provided custom message
+> - `unwrap` panics with a generic message
+> - `unwrap_or` returns the provided default value
+> - `unwrap_or_default` returns the default value of the type T (which must implement the Default trait)
+> - `unwrap_or_else` returns the result of evaluating the provided function
+> - `unwrap_unchecked` produces undefined behavior
+
+Now let's compare what the [Swift documentation](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/errorhandling/#Handling-Errors) says that Swift offers to get a value from a function which might error:
+
+> There are four ways to handle errors in Swift. You can propagate the error from a function to the code that calls that function, handle the error using a do-catch statement, handle the error as an optional value, or assert that the error will not occur.
+-->
 
 
 
