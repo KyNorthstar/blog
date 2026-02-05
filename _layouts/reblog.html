@@ -1,0 +1,48 @@
+---
+layout: post
+categories:
+    - Reblog
+    
+app-bar:
+    right-widget: alert-chip--reblog.html
+---
+
+{%- capture authorName %}
+{{ page.original.author | default: "someone else" }}
+{%- endcapture %}
+
+{%- capture author %}
+{%- if page.original.author-url %}
+    [{{ authorName }}]({{ page.original.author-url }})
+{%- else %}
+    {{ authorName }}
+{%- endif %}
+{%- endcapture %}
+
+{%- capture callout %}
+## Reblog
+
+I didn't write this. This was originally written **by {{ author }}** {% if page.original.date -%} on **{{ page.original.date }}** {%- else -%} in the past {%- endif -%}: **[{{ page.title }}]({{ page.original.url | default: "ERROR: `page.original.url` not found" }})**
+
+{%- if page.reblog-reason %}
+
+{{ page.reblog-reason | replace: "
+", "
+
+" | markdownify }}
+{%- endif %}
+
+Everything below has been copy-pasted from that original post, exactly, with only styling changes so that it matches the theme of this blog. **All the words in this reblog are those of {{ authorName }}**, from their perspective, _not {{ site.author.name | default: "mine" }}_.
+
+<div class="flex-row flex-horiz-right">
+    <a href="{{ page.original.url }}" target="_blank" class="medium-emphasis button">Read the original post</a>
+</div>
+{%- endcapture %}
+{%- include critically-important-callout.html
+    markdown-content=callout
+    htmlClass="reblog-preamble"
+%}
+
+
+
+{{ content }}

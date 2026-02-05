@@ -9,17 +9,22 @@
 @import "general";
 @import "page-transitions";
 @import "typography";
+
 @import "posts-and-pages";
 @import "post-list";
+
 @import "infoboxes";
 @import "app-cloud";
 @import "word-cloud";
 @import "content-switcher";
+@import "tweet-embed";
+
 @import "decorations";
+
 @import "legal-styles";
 @import "theme-styles";
-@import "to-be-transferred";
 
+@import "to-be-transferred";
 
 //
 // General
@@ -54,3 +59,7 @@ main {
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "rouge-code-highlighting";
+
+
+// Since these can be critical, they must be loaded last so that no other style overrides them
+@import "critical-styles";

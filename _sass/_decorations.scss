@@ -23,6 +23,19 @@ kbd {
 }
 
 
+.reblog-tag {
+    display: flex;
+    align-items: center;
+    padding: 3px 1em;
+    /* border: 1px solid red; */
+    margin: auto 1em;
+    border-radius: 9999in;
+    background: var(--theme-background-color-at-level-flat);
+    text-decoration: none;
+    color: var(--theme-accent-color);
+}
+
+
 .singular-hero-emoji {
     font-size: 3cm;
     text-align: center;

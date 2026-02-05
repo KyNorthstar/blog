@@ -1,0 +1,44 @@
+//
+// critical-styles.scss
+//
+// When it's very important that the user see something
+//
+
+/// Callouts point out something on a page, with a distinct separation from the rest of the layout
+.critically-important-callout {
+    .post &,
+    .page & {
+        @at-root :root {
+            --critically-important-callout-foreground-color: var(--theme-foreground-color, inherit);
+            --critically-important-callout-background-color: var(--theme-background-color-at-level-raised, transparent);
+            --critically-important-callout-ring-color: var(--material-deep-orange-a400, #F00);
+            --critically-important-callout-link-color: var(--theme-text-on-accent-color-color, inherit);
+        }
+        
+        background-color: var(--critically-important-callout-background-color);
+        box-shadow: 0 0 0 1ex var(--critically-important-callout-ring-color);
+        box-shadow: var(--box-shadow-z6), 0 0 0 1ex var(--critically-important-callout-ring-color);
+        border: 2px solid var(--critically-important-callout-ring-color);
+        
+        margin-block: var(--header-margin-block, 3rem);
+        
+        &, * { // `*` might just need to be `p`, unsure.
+            @at-root :root {
+            }
+            
+            //color: var(--critically-important-callout-foreground-color);
+        }
+        
+        
+        :link, :visited {
+            //color: var(--critically-important-callout-link-color)
+        }
+        
+        
+        &.reblog-preamble {
+            --critically-important-callout-foreground-color: var(--theme-foreground-color);
+            --critically-important-callout-background-color: var(--theme-background-color-at-level-raised);
+            --critically-important-callout-ring-color: var(--theme-accent-color);
+        }
+    }
+}

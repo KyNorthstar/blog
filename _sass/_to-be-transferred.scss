@@ -1,6 +1,15 @@
 // These should be transferred to the general BHStudios styles someday
 // https://github.com/BlueHuskyStudios/stylesheets
 
+:root {
+    --button-border-radius: 1ex;
+}
+
+
+* {
+    corner-shape: superellipse(1);
+}
+
 
 
 [hidden] {
@@ -22,6 +31,12 @@
 }
 
 
+
+.button {
+    &.capsule {
+        border-radius: 9999in;
+    }
+}
 
 .chips .chip {
     border-width: 0;

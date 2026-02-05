@@ -84,6 +84,11 @@
     h6 {
         padding: var(--heading-spacing-block-start) 0 0;
         margin: 0 0 var(--heading-spacing-block-end);
+        
+        &:first-child {
+            padding-block-start: 0;
+            margin-block-start: 0;
+        }
     }
     
     hr {
