@@ -12,7 +12,7 @@
     </div>
     <div class="tweet-info">
         <a href="{{ include.url }}" target="_blank">
-            <time datetime="{{ include.post-date-iso8601 }}">{{ include.post-date-pretty }}</time>
+            <time datetime="{{ include.post-date | date_to_xmlschema }}">{{ include.post-date | date: "%-l:%M %p · %b %e, %Y" }}</time>
         </a>
     </div>
 </article>

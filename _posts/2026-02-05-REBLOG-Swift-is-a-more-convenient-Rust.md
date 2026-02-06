@@ -253,8 +253,7 @@ All the details here: [forums.swift.org/t/improvements…](https://forums.swift.
     account-url="https://swift.org"
     account-icon="/images/logos/swift-icon.svg"
     account-follow-url="https://www.swift.org/atom.xml"
-    post-date-pretty="5:31 PM · Jun 24, 2024"
-    post-date-iso8601="2024-06-24T17:31:06.000Z"
+    post-date="2024-06-24T17:31:06.000Z"
 %}
 
 

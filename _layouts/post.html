@@ -36,11 +36,13 @@ layout: default
     </div>
 
     <footer class="card">
+        {%- if page.categories.size > 0 %}
         <ol class="chips   plain   flex-row flex-wrap flex-horiz-center flex-vert-center">
             {% for category in page.categories %}
             <li><span class="chip" disabled data-category-name="{{ category }}">{{ category }}</span></li>
             {% endfor %}
         </ol>
+        {%- endif %}
 
         <ol class="dates-and-times   plain">
             <li>
