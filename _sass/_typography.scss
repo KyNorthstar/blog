@@ -2,3 +2,37 @@
 .text-align--end {
     text-align: end;
 }
+
+
+
+code {
+    font-family: "Fira Code", monospace;
+    font-size: 0.9em;
+    
+    
+    li>&,
+    p>& {
+        color: var(--theme-foreground-color);
+    }
+    
+    
+    li &,
+    p & {
+        background: var(--theme-background-color-at-level-raised);
+        padding: 0.2ex 0.5ex;
+        //border: 1px solid var(--theme-accent-color);
+        border-radius: 1ex;
+        margin: -0.2ex -0.25ex;
+        
+        &::before,
+        &::after {
+            content: "`";
+            color: var(--theme-accent-color);
+            //opacity: 50%;
+        }
+    }
+    
+    pre & {
+        font-size: 0.75em;
+    }
+}

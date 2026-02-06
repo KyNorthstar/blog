@@ -1,0 +1,18 @@
+
+<article class="tweet-embed    card">
+    <div class="tweet-header   flex-row flex-horiz-space-between flex-vert-top">
+        <a href="{{ include.account-url }}" target="_blank" class="tweet-account   flex-row flex-vert-center">
+            <img alt="{{ include.account-name }}" class="tweet-avatar" width="48" height="48" src="{{ include.account-icon }}">
+            <span class="tweet-account-name">{{ include.account-name }}</span>
+        </a>
+        <a href="{{ include.account-follow-url }}" class="tweet-account-follow capsule button" target="_blank">Follow</a>
+    </div>
+    <div class="tweet-body">
+        {{- include.body | markdownify -}}
+    </div>
+    <div class="tweet-info">
+        <a href="{{ include.url }}" target="_blank">
+            <time datetime="{{ include.post-date | date_to_xmlschema }}">{{ include.post-date | date: "%-l:%M %p · %b %e, %Y" }}</time>
+        </a>
+    </div>
+</article>

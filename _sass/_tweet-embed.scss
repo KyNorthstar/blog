@@ -1,0 +1,48 @@
+
+.tweet-embed {
+    
+    min-width: 250px;
+    max-width: 550px;
+    margin: 1.5em auto;
+    padding: 0.75em 1em;
+    
+    
+    .tweet-account {
+        text-decoration: none;
+    }
+    
+    .tweet-account-name {
+        margin-inline: 1ex;
+        color: var(--theme-foreground-color);
+        font-weight: bold;
+    }
+    
+    .tweet-avatar {
+        border-radius: 100%;
+    }
+    
+    .tweet-account-follow.button {
+        margin: 0;
+    }
+    
+    .tweet-info {
+        
+        font-size: 75%;
+        
+        :link, :visited {
+            color: var(--theme-foreground-color);
+            opacity: 50%;
+            text-decoration: none;
+        }
+    }
+    
+    
+    
+    &>:not(:first-child) {
+        margin-block-start: 1em;
+    }
+    
+    p {
+        text-indent: 0;
+    }
+}

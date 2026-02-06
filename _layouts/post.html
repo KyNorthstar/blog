@@ -36,29 +36,38 @@ layout: default
     </div>
 
     <footer class="card">
+        {%- if page.categories.size > 0 %}
         <ol class="chips   plain   flex-row flex-wrap flex-horiz-center flex-vert-center">
             {% for category in page.categories %}
             <li><span class="chip" disabled data-category-name="{{ category }}">{{ category }}</span></li>
             {% endfor %}
         </ol>
+        {%- endif %}
 
         <ol class="dates-and-times   plain">
             <li>
-                <time class="date" datetime="{{ page.date | date_to_xmlschema }}">
-                    <span>{% if page.date-migrated or page.date-edit %}Originally posted{% else %}Posted{% endif %}</span> {{ page.date | date: "%F <span>(a %A)</span> at <span>%R %Z</span>" }}
+                <time class="date" datetime="{{ page.date-original | default: page.date | date_to_xmlschema }}">
+                    <span>{% if page.date-migrated or page.date-edit or page.date-original %}Originally posted{% else %}Posted{% endif %}</span> {{ page.date-original | default: page.date | date: "%F <span>(a %A)</span>" }}
                 </time>
             </li>
+            {%- if page.layout == "reblog" %}
+            <li>
+                <time class="date" datetime="{{ page.date | date_to_xmlschema }}">
+                    Reblogged here {{ page.date | date: "%F (a %A)" }}
+                </time>
+            </li>
+            {%- endif %}
             {%- if page.date-migrated %}
             <li>
                 <time class="date" datetime="{{ page.date-migrated | date_to_xmlschema }}">
-                    Migrated {{ page.date-migrated | date: "%F (a %A) at %R %Z" }}
+                    Migrated here {{ page.date-migrated | date: "%F (a %A)" }}
                 </time>
             </li>
             {%- endif %}
             {%- if page.date-edit %}
             <li>
                 <time class="date" datetime="{{ page.date-edit | date_to_xmlschema }}">
-                    Updated {{ page.date-edit | date: "%F (a %A) at %R %Z" }}
+                    Updated {{ page.date-edit | date: "%F (a %A)" }}
                 </time>
             </li>
             {%- endif %}

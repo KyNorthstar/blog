@@ -83,9 +83,20 @@
     <header class="app-bar effect-background">
         <a href="#" class="flat button show-sidebar-button" onclick="return false;"><i class="material-icons">menu</i></a>
         <a href="/" class="flat button   back-to-root-link"><h1 class="title"><span class="title-text">{{ site.title }}</span><span class="subtitle-text"></span></h1></a>
-        {% if page.app-bar.right-widget -%}
-        {% include {{ page.app-bar.right-widget }} -%}
-        {% else -%}
+        {%- assign right-widgets = "" | split: "" %}
+        
+        {%- if layout.app-bar.right-widget %}
+            {%- assign right-widgets = right-widgets | push: layout.app-bar.right-widget %}
+        {%- endif %}
+        {%- if page.app-bar.right-widget %}
+            {%- assign right-widgets = right-widgets | push: page.app-bar.right-widget %}
+        {%- endif %}
+        
+        {%- if 0 != right-widgets.size %}
+            {%- for right-widget in right-widgets %}
+                {%- include {{ right-widget }} %}
+            {%- endfor %}
+        {%- else -%}
         <span class="layout-placeholder"></span>
         {%- endif %}
     </header>

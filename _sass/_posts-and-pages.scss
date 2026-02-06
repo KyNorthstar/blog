@@ -49,7 +49,7 @@
         strong {
             font-weight: 900;
             color: var(--theme-foreground-color);
-            letter-spacing: 0.075ex;
+            letter-spacing: 0.05ex;
         }
         
         em {
@@ -84,6 +84,11 @@
     h6 {
         padding: var(--heading-spacing-block-start) 0 0;
         margin: 0 0 var(--heading-spacing-block-end);
+        
+        &:first-child {
+            padding-block-start: 0;
+            margin-block-start: 0;
+        }
     }
     
     hr {
@@ -487,7 +492,7 @@
         
         .dates-and-times {
             list-style-type: none;
-            margin-block-start: 2em;
+            //margin-block-start: 2em;
             
             >* {
                 margin: 1em 0;

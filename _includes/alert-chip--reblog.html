@@ -1,0 +1,9 @@
+{%- assign page = include.post | default: page %}
+{%- assign url = page.original.url | default: page.original.author-url %}
+
+
+<a href="{{ url }}" class="reblog-tag">Reblogged
+    {%- if page.original.author %}
+        from {{ page.original.author }}
+    {%- endif %}
+</a>

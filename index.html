@@ -20,6 +20,13 @@ layout: default
             <div class="entry" markdown="1">
                 {{ post.content }}
             </div>
+            {% elsif post.layout == 'reblog' %}
+            <div class="entry" markdown="1">
+                {{ post.reblog-reason | default: "I didn't write this one" | replace: "
+", "
+
+" | markdownify }}
+            </div>
             {% else %}
             <div class="entry" markdown="1">
                 {{ post.excerpt }}
@@ -54,7 +61,14 @@ layout: default
         {% endif %}
 
         <footer class="flex-row flex-horiz-space-between flex-vert-center">
-            <time class="date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%a. %F at %R" }}</time>
+            {%- assign presentedDate = post.date-original | default: post.date %}
+            <time class="date" datetime="{{ presentedDate | date_to_xmlschema }}">{{ presentedDate | date: "%a. %F" }}</time>
+            
+            {%- if post.layout == 'reblog' %}
+                {%- include alert-chip--reblog.html
+                    post=post
+                %}
+            {%- endif %}
 
             {% unless post.categories contains 'Micro' %}
             <a href="{{ site.baseurl }}{{ post.url }}" class="small low-emphasis button">Read More</a>
