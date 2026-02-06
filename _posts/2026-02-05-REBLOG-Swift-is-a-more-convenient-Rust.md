@@ -1,8 +1,11 @@
 ---
 layout: reblog
 title: Swift is a more convenient Rust
-date: 2026-02-05
+date: 2026-02-05 MT
 date-original: 2023-10-02
+categories:
+    - Tech
+    - Programming
 
 original:
     url: https://nmn.sh/blog/2023-10-02-swift-is-the-more-convenient-rust

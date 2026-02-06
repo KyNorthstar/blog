@@ -49,7 +49,7 @@
         strong {
             font-weight: 900;
             color: var(--theme-foreground-color);
-            letter-spacing: 0.075ex;
+            letter-spacing: 0.05ex;
         }
         
         em {
@@ -492,7 +492,7 @@
         
         .dates-and-times {
             list-style-type: none;
-            margin-block-start: 2em;
+            //margin-block-start: 2em;
             
             >* {
                 margin: 1em 0;
