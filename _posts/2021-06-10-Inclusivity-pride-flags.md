@@ -18,7 +18,6 @@ download-link: https://drive.google.com/drive/folders/1hC5HeHDs5LDt_t8O_sPOEegXH
 
 discussion:
   reddit: https://www.reddit.com/r/QueerVexillology/comments/oeyv9z/i_made_a_pride_flag_for_the_gsm_community/
-  twitter: https://twitter.com/kyleggiero/status/1412443449073098755?s=21
   mastodon: https://mastodon.social/users/BenLeggiero/statuses/106534572931497401
   telegram: https://t.me/KyTakes/47
 ---
